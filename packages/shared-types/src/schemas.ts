@@ -153,3 +153,4 @@ export const UpdateAdminStatusSchema = z.object({
 export const CheckPincodeSchema = z.object({
   pincode: z.string().regex(/^\d{6}$/, 'Enter a valid 6-digit PIN code'),
 });
+

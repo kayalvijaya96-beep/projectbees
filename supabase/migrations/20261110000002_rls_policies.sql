@@ -237,3 +237,4 @@ CREATE POLICY "Authenticated users can read system settings" ON system_settings
 
 CREATE POLICY "Super Admin can manage system settings" ON system_settings
   FOR ALL USING (is_super_admin());
+

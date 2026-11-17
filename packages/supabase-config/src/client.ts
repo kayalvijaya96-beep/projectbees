@@ -10,3 +10,4 @@ export function createClient(supabaseUrl?: string, supabaseAnonKey?: string) {
 
   return createBrowserClient(url, anonKey);
 }
+

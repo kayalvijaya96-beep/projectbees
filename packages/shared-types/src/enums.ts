@@ -34,3 +34,4 @@ export type AdminStatus = 'active' | 'suspended' | 'deactivated';
 export type ReviewStatus = 'pending_review' | 'approved' | 'rejected' | 'flagged';
 
 export type GenderOption = 'male' | 'female' | 'other' | 'prefer_not_to_say';
+
