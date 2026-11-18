@@ -1,25 +1,7 @@
 import { NextRequest } from 'next/server';
 import { successResponse, errorResponse } from '@/lib/api-response';
-import { INTENT_STORE } from '@/app/api/v1/checkout/intents/route';
+import { INTENT_STORE, ORDER_STORE, FinalOrderRecord } from '@/lib/checkout-store';
 import { FinalizeOrderSchema } from '@projectbee/shared-types';
-
-export interface FinalOrderRecord {
-  id: string;
-  order_number: string;
-  checkout_intent_id: string;
-  address_snapshot: Record<string, any>;
-  items_snapshot: any[];
-  subtotal: number;
-  shipping_amount: number;
-  total_amount: number;
-  payment_method: 'COD';
-  payment_status: 'unpaid' | 'paid';
-  order_status: 'pending_confirmation';
-  idempotency_key: string;
-  created_at: string;
-}
-
-export const ORDER_STORE = new Map<string, FinalOrderRecord>();
 
 export async function POST(request: NextRequest) {
   try {

@@ -2,7 +2,16 @@ import { NextRequest } from 'next/server';
 import { successResponse, errorResponse } from '@/lib/api-response';
 import { UpdateProfileSchema } from '@projectbee/shared-types';
 
-let MOCK_PROFILE = {
+let MOCK_PROFILE: {
+  id: string;
+  display_name: string;
+  gender: string | null;
+  class_level: number | null;
+  board: string;
+  profile_completion: number;
+  is_parent_guardian: boolean;
+  updated_at: string;
+} = {
   id: 'usr_sample_student_01',
   display_name: 'Aarav Sharma',
   gender: 'male',

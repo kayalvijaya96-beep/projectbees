@@ -1,7 +1,7 @@
 import { NextRequest } from 'next/server';
 import { successResponse, errorResponse } from '@/lib/api-response';
 import { OtpService } from '@/lib/otp-service';
-import { INTENT_STORE } from '@/app/api/v1/checkout/intents/route';
+import { INTENT_STORE } from '@/lib/checkout-store';
 import { RequestWhatsAppOtpSchema } from '@projectbee/shared-types';
 
 export async function POST(request: NextRequest) {
