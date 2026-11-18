@@ -46,7 +46,7 @@ export default function AdminLayout({
 
           <div className="flex items-center gap-4 text-xs">
             <a
-              href="http://localhost:3000"
+              href="/"
               target="_blank"
               rel="noreferrer"
               className="text-slate-300 hover:text-white flex items-center gap-1 font-medium"
