@@ -129,19 +129,19 @@ export function ProductsClient({ initialParams }: ProductsClientProps) {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 space-y-8">
       {/* Page Title & Breadcrumb */}
-      <div className="space-y-2 border-b border-[#E2E8F0] pb-6">
-        <div className="flex items-center gap-2 text-xs text-[#68778A]">
-          <Link href="/" className="hover:text-[#173B67]">Home</Link>
+      <div className="space-y-2 border-b border-[#1E293B] pb-6">
+        <div className="flex items-center gap-2 text-xs text-[#94A3B8]">
+          <Link href="/" className="hover:text-[#F6C94B]">Home</Link>
           <span>/</span>
-          <span className="font-semibold text-[#173B67]">School Projects Catalogue</span>
+          <span className="font-semibold text-white">School Projects Catalogue</span>
         </div>
 
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pt-2">
           <div>
-            <h1 className="text-2xl sm:text-4xl font-extrabold font-heading text-[#173B67] tracking-tight">
+            <h1 className="text-2xl sm:text-4xl font-extrabold font-heading text-white tracking-tight">
               School Science Models &amp; Project Kits
             </h1>
-            <p className="text-xs sm:text-sm text-[#68778A] mt-1">
+            <p className="text-xs sm:text-sm text-[#94A3B8] mt-1">
               Curriculum-aligned CBSE &amp; ICSE exhibition models, 3D educational kits, and assignment materials.
             </p>
           </div>
@@ -149,9 +149,9 @@ export function ProductsClient({ initialParams }: ProductsClientProps) {
           <button
             type="button"
             onClick={() => setMobileFilterOpen(true)}
-            className="md:hidden inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-white border border-[#CBD5E1] text-[#173B67] font-bold text-sm shadow-2xs"
+            className="md:hidden inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-[#111A2E] border border-[#1E293B] text-white font-bold text-sm shadow-2xs"
           >
-            <SlidersHorizontal className="w-4 h-4" />
+            <SlidersHorizontal className="w-4 h-4 text-[#F6C94B]" />
             <span>Filters &amp; Refine</span>
             {hasActiveFilters && (
               <span className="w-2 h-2 rounded-full bg-[#F6C94B]" />
@@ -163,9 +163,9 @@ export function ProductsClient({ initialParams }: ProductsClientProps) {
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
         {/* Left Column: Filter Sidebar (Desktop) */}
         <aside className="hidden lg:block space-y-6">
-          <div className="rounded-2xl border border-[#E2E8F0] bg-white p-5 shadow-soft space-y-6">
-            <div className="flex items-center justify-between border-b border-[#F1F5F9] pb-3">
-              <h3 className="font-heading font-bold text-sm text-[#173B67] flex items-center gap-2">
+          <div className="rounded-2xl border border-[#1E293B] bg-[#111A2E]/80 backdrop-blur-md p-5 shadow-soft space-y-6">
+            <div className="flex items-center justify-between border-b border-[#1E293B] pb-3">
+              <h3 className="font-heading font-bold text-sm text-white flex items-center gap-2">
                 <Filter className="w-4 h-4 text-[#F6C94B]" />
                 <span>Filter Catalogue</span>
               </h3>
@@ -173,7 +173,7 @@ export function ProductsClient({ initialParams }: ProductsClientProps) {
                 <button
                   type="button"
                   onClick={clearAllFilters}
-                  className="text-xs text-[#173B67] hover:text-[#285A91] font-semibold flex items-center gap-1 cursor-pointer"
+                  className="text-xs text-[#F6C94B] hover:text-[#E5B734] font-semibold flex items-center gap-1 cursor-pointer"
                 >
                   <RotateCcw className="w-3 h-3" />
                   <span>Clear All</span>
@@ -183,7 +183,7 @@ export function ProductsClient({ initialParams }: ProductsClientProps) {
 
             {/* Board Filter */}
             <div className="space-y-2">
-              <label className="block text-xs font-bold uppercase tracking-wider text-[#68778A]">
+              <label className="block text-xs font-bold uppercase tracking-wider text-[#94A3B8]">
                 Curriculum Board
               </label>
               <div className="flex gap-2">
@@ -194,8 +194,8 @@ export function ProductsClient({ initialParams }: ProductsClientProps) {
                     onClick={() => setSelectedBoard(board)}
                     className={`flex-1 py-1.5 px-2 text-xs font-bold rounded-xl border transition-all cursor-pointer ${
                       selectedBoard === board
-                        ? 'bg-[#173B67] text-white border-[#173B67] shadow-sm'
-                        : 'bg-white text-[#263447] border-[#CBD5E1] hover:border-[#173B67]/30 hover:bg-[#F5F8FC]'
+                        ? 'bg-[#173B67] text-[#F6C94B] border-[#285A91] shadow-sm'
+                        : 'bg-[#0E1626] text-[#CBD5E1] border-[#1E293B] hover:border-[#F6C94B]/40 hover:bg-[#17233B]'
                     }`}
                   >
                     {board === 'all' ? 'All' : board}
@@ -206,7 +206,7 @@ export function ProductsClient({ initialParams }: ProductsClientProps) {
 
             {/* Class 1-12 Pills */}
             <div className="space-y-2">
-              <label className="block text-xs font-bold uppercase tracking-wider text-[#68778A]">
+              <label className="block text-xs font-bold uppercase tracking-wider text-[#94A3B8]">
                 Student Class
               </label>
               <div className="grid grid-cols-4 gap-1.5">
@@ -215,8 +215,8 @@ export function ProductsClient({ initialParams }: ProductsClientProps) {
                   onClick={() => setSelectedClass('all')}
                   className={`col-span-4 py-1.5 text-xs font-bold rounded-lg border transition-all cursor-pointer ${
                     selectedClass === 'all'
-                      ? 'bg-[#173B67] text-white border-[#173B67]'
-                      : 'bg-[#F5F8FC] text-[#263447] border-[#CBD5E1] hover:bg-white'
+                      ? 'bg-[#173B67] text-[#F6C94B] border-[#285A91]'
+                      : 'bg-[#0E1626] text-[#CBD5E1] border-[#1E293B] hover:bg-[#17233B]'
                   }`}
                 >
                   All Classes (1 to 12)
@@ -229,7 +229,7 @@ export function ProductsClient({ initialParams }: ProductsClientProps) {
                     className={`py-1.5 text-xs font-semibold rounded-lg border transition-all cursor-pointer ${
                       selectedClass === String(c)
                         ? 'bg-[#F6C94B] text-[#173B67] border-[#E5B734] font-bold shadow-2xs'
-                        : 'bg-white text-[#263447] border-[#CBD5E1] hover:border-[#F6C94B] hover:bg-[#FEFCE8]'
+                        : 'bg-[#0E1626] text-[#CBD5E1] border-[#1E293B] hover:border-[#F6C94B] hover:bg-[#17233B]'
                     }`}
                   >
                     {c}
@@ -240,7 +240,7 @@ export function ProductsClient({ initialParams }: ProductsClientProps) {
 
             {/* Categories Filter */}
             <div className="space-y-2">
-              <label className="block text-xs font-bold uppercase tracking-wider text-[#68778A]">
+              <label className="block text-xs font-bold uppercase tracking-wider text-[#94A3B8]">
                 Categories
               </label>
               <div className="space-y-1">
@@ -249,8 +249,8 @@ export function ProductsClient({ initialParams }: ProductsClientProps) {
                   onClick={() => setSelectedCategory('all')}
                   className={`w-full text-left px-2.5 py-1.5 rounded-lg text-xs transition-colors cursor-pointer ${
                     selectedCategory === 'all'
-                      ? 'bg-[#EFF6FF] text-[#1E40AF] font-bold'
-                      : 'text-[#263447] hover:bg-[#F5F8FC]'
+                      ? 'bg-[#173B67] text-[#F6C94B] font-bold'
+                      : 'text-[#CBD5E1] hover:bg-[#0E1626]'
                   }`}
                 >
                   All Project Types
@@ -262,8 +262,8 @@ export function ProductsClient({ initialParams }: ProductsClientProps) {
                     onClick={() => setSelectedCategory(cat.slug)}
                     className={`w-full text-left px-2.5 py-1.5 rounded-lg text-xs transition-colors cursor-pointer ${
                       selectedCategory === cat.slug
-                        ? 'bg-[#EFF6FF] text-[#1E40AF] font-bold'
-                        : 'text-[#263447] hover:bg-[#F5F8FC]'
+                        ? 'bg-[#173B67] text-[#F6C94B] font-bold'
+                        : 'text-[#CBD5E1] hover:bg-[#0E1626]'
                     }`}
                   >
                     {cat.title}
@@ -274,9 +274,9 @@ export function ProductsClient({ initialParams }: ProductsClientProps) {
 
             {/* Price Slider */}
             <div className="space-y-2">
-              <div className="flex justify-between items-center text-xs font-bold uppercase tracking-wider text-[#68778A]">
+              <div className="flex justify-between items-center text-xs font-bold uppercase tracking-wider text-[#94A3B8]">
                 <span>Max Price</span>
-                <span className="text-[#173B67] font-extrabold text-sm">₹{maxPrice}</span>
+                <span className="text-[#F6C94B] font-extrabold text-sm">₹{maxPrice}</span>
               </div>
               <input
                 type="range"
@@ -285,9 +285,9 @@ export function ProductsClient({ initialParams }: ProductsClientProps) {
                 step="50"
                 value={maxPrice}
                 onChange={(e) => setMaxPrice(Number(e.target.value))}
-                className="w-full h-2 bg-[#E2E8F0] rounded-lg appearance-none cursor-pointer accent-[#173B67]"
+                className="w-full h-2 bg-[#1E293B] rounded-lg appearance-none cursor-pointer accent-[#F6C94B]"
               />
-              <div className="flex justify-between text-[10px] text-[#68778A]">
+              <div className="flex justify-between text-[10px] text-[#94A3B8]">
                 <span>₹200</span>
                 <span>₹1200</span>
               </div>
@@ -298,22 +298,22 @@ export function ProductsClient({ initialParams }: ProductsClientProps) {
         {/* Right Column: Search, Sort bar & Product Grid */}
         <div className="lg:col-span-3 space-y-6">
           {/* Top Filter Bar */}
-          <div className="rounded-2xl border border-[#E2E8F0] bg-white p-4 shadow-soft flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="rounded-2xl border border-[#1E293B] bg-[#111A2E]/80 backdrop-blur-md p-4 shadow-soft flex flex-col sm:flex-row items-center justify-between gap-4">
             {/* Search Input in Grid */}
             <div className="relative w-full sm:max-w-md">
-              <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#68778A]" />
+              <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#94A3B8]" />
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search models by name, topic, or keyword..."
-                className="w-full h-10 pl-10 pr-4 text-xs bg-[#F5F8FC] border border-[#CBD5E1] rounded-xl text-[#263447] focus:outline-none focus:border-[#F6C94B] focus:bg-white"
+                className="w-full h-10 pl-10 pr-4 text-xs bg-[#0E1626] border border-[#1E293B] rounded-xl text-white placeholder:text-[#64748B] focus:outline-none focus:border-[#F6C94B]"
               />
               {searchQuery && (
                 <button
                   type="button"
                   onClick={() => setSearchQuery('')}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-[#68778A] hover:text-[#173B67]"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-[#94A3B8] hover:text-white"
                 >
                   <X className="w-3.5 h-3.5" />
                 </button>
@@ -322,16 +322,16 @@ export function ProductsClient({ initialParams }: ProductsClientProps) {
 
             {/* Sort & Count */}
             <div className="flex items-center justify-between w-full sm:w-auto gap-4">
-              <span className="text-xs text-[#68778A] whitespace-nowrap">
-                <strong className="text-[#173B67]">{filteredProducts.length}</strong> items
+              <span className="text-xs text-[#94A3B8] whitespace-nowrap">
+                <strong className="text-white">{filteredProducts.length}</strong> items
               </span>
 
-              <div className="flex items-center gap-1.5 text-xs text-[#68778A]">
+              <div className="flex items-center gap-1.5 text-xs text-[#94A3B8]">
                 <ArrowUpDown className="w-3.5 h-3.5" />
                 <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value)}
-                  className="h-10 px-3 rounded-xl border border-[#CBD5E1] bg-white text-xs font-semibold text-[#173B67] focus:outline-none focus:border-[#F6C94B]"
+                  className="h-10 px-3 rounded-xl border border-[#1E293B] bg-[#0E1626] text-xs font-semibold text-white focus:outline-none focus:border-[#F6C94B]"
                 >
                   <option value="popular">Most Popular</option>
                   <option value="price-low">Price: Low to High</option>
@@ -345,9 +345,9 @@ export function ProductsClient({ initialParams }: ProductsClientProps) {
           {/* Active Filter Tags */}
           {hasActiveFilters && (
             <div className="flex items-center gap-2 flex-wrap text-xs">
-              <span className="text-[#68778A] font-medium">Active Filters:</span>
+              <span className="text-[#94A3B8] font-medium">Active Filters:</span>
               {selectedBoard !== 'all' && (
-                <span className="bg-[#EFF6FF] text-[#1E40AF] px-2.5 py-1 rounded-lg border border-[#BFDBFE] flex items-center gap-1">
+                <span className="bg-[#17233B] text-[#93C5FD] px-2.5 py-1 rounded-lg border border-[#1E3A5F] flex items-center gap-1">
                   Board: {selectedBoard}
                   <button type="button" onClick={() => setSelectedBoard('all')}>
                     <X className="w-3 h-3" />
@@ -355,7 +355,7 @@ export function ProductsClient({ initialParams }: ProductsClientProps) {
                 </span>
               )}
               {selectedClass !== 'all' && (
-                <span className="bg-[#FEFCE8] text-[#854D0E] px-2.5 py-1 rounded-lg border border-[#FEF08A] flex items-center gap-1">
+                <span className="bg-[#2A230B] text-[#FDE047] px-2.5 py-1 rounded-lg border border-[#4A3D12] flex items-center gap-1">
                   Class: {selectedClass}
                   <button type="button" onClick={() => setSelectedClass('all')}>
                     <X className="w-3 h-3" />
@@ -363,7 +363,7 @@ export function ProductsClient({ initialParams }: ProductsClientProps) {
                 </span>
               )}
               {selectedCategory !== 'all' && (
-                <span className="bg-[#F0FDF4] text-[#166534] px-2.5 py-1 rounded-lg border border-[#BBF7D0] flex items-center gap-1">
+                <span className="bg-[#0F291E] text-[#86EFAC] px-2.5 py-1 rounded-lg border border-[#14532D] flex items-center gap-1">
                   Category: {CATEGORIES.find((c) => c.slug === selectedCategory)?.title || selectedCategory}
                   <button type="button" onClick={() => setSelectedCategory('all')}>
                     <X className="w-3 h-3" />
@@ -371,7 +371,7 @@ export function ProductsClient({ initialParams }: ProductsClientProps) {
                 </span>
               )}
               {searchQuery && (
-                <span className="bg-[#F5F8FC] text-[#173B67] px-2.5 py-1 rounded-lg border border-[#CBD5E1] flex items-center gap-1">
+                <span className="bg-[#111A2E] text-[#F6C94B] px-2.5 py-1 rounded-lg border border-[#1E293B] flex items-center gap-1">
                   Query: &quot;{searchQuery}&quot;
                   <button type="button" onClick={() => setSearchQuery('')}>
                     <X className="w-3 h-3" />
@@ -381,7 +381,7 @@ export function ProductsClient({ initialParams }: ProductsClientProps) {
               <button
                 type="button"
                 onClick={clearAllFilters}
-                className="text-xs font-bold text-[#173B67] hover:underline ml-1"
+                className="text-xs font-bold text-[#F6C94B] hover:underline ml-1"
               >
                 Reset All
               </button>
@@ -390,12 +390,12 @@ export function ProductsClient({ initialParams }: ProductsClientProps) {
 
           {/* Product Grid */}
           {filteredProducts.length === 0 ? (
-            <div className="rounded-2xl border border-dashed border-[#CBD5E1] p-12 text-center space-y-4 bg-white">
-              <BookOpen className="w-12 h-12 text-[#68778A] mx-auto" />
-              <h3 className="font-heading font-bold text-lg text-[#173B67]">
+            <div className="rounded-2xl border border-dashed border-[#1E293B] p-12 text-center space-y-4 bg-[#111A2E]/80 backdrop-blur-md">
+              <BookOpen className="w-12 h-12 text-[#94A3B8] mx-auto" />
+              <h3 className="font-heading font-bold text-lg text-white">
                 No matching projects found
               </h3>
-              <p className="text-xs sm:text-sm text-[#68778A] max-w-sm mx-auto">
+              <p className="text-xs sm:text-sm text-[#94A3B8] max-w-sm mx-auto">
                 We couldn&apos;t find any products matching your current filters. Try resetting filters or searching a different term.
               </p>
               <button
@@ -418,14 +418,14 @@ export function ProductsClient({ initialParams }: ProductsClientProps) {
 
       {/* Mobile Drawer */}
       {mobileFilterOpen && (
-        <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-xs flex justify-end">
-          <div className="w-full max-w-xs bg-white h-full p-6 space-y-6 overflow-y-auto">
-            <div className="flex items-center justify-between border-b border-[#E2E8F0] pb-3">
-              <h3 className="font-heading font-bold text-base text-[#173B67]">Filter Catalogue</h3>
+        <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-xs flex justify-end">
+          <div className="w-full max-w-xs bg-[#0E1626] border-l border-[#1E293B] h-full p-6 space-y-6 overflow-y-auto">
+            <div className="flex items-center justify-between border-b border-[#1E293B] pb-3">
+              <h3 className="font-heading font-bold text-base text-white">Filter Catalogue</h3>
               <button
                 type="button"
                 onClick={() => setMobileFilterOpen(false)}
-                className="p-1 rounded-lg text-[#68778A] hover:bg-[#F5F8FC]"
+                className="p-1 rounded-lg text-[#94A3B8] hover:bg-[#111A2E]"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -434,7 +434,7 @@ export function ProductsClient({ initialParams }: ProductsClientProps) {
             {/* Mobile Filters Content */}
             <div className="space-y-4 text-xs">
               <div>
-                <label className="font-bold text-[#68778A] block mb-2">Curriculum Board</label>
+                <label className="font-bold text-[#94A3B8] block mb-2">Curriculum Board</label>
                 <div className="flex gap-2">
                   {['all', 'CBSE', 'ICSE'].map((b) => (
                     <button
@@ -442,7 +442,9 @@ export function ProductsClient({ initialParams }: ProductsClientProps) {
                       type="button"
                       onClick={() => setSelectedBoard(b)}
                       className={`flex-1 py-2 font-bold rounded-lg border ${
-                        selectedBoard === b ? 'bg-[#173B67] text-white' : 'bg-white'
+                        selectedBoard === b
+                          ? 'bg-[#173B67] text-[#F6C94B] border-[#285A91]'
+                          : 'bg-[#111A2E] text-[#CBD5E1] border-[#1E293B]'
                       }`}
                     >
                       {b}
@@ -452,7 +454,7 @@ export function ProductsClient({ initialParams }: ProductsClientProps) {
               </div>
 
               <div>
-                <label className="font-bold text-[#68778A] block mb-2">Class (1 to 12)</label>
+                <label className="font-bold text-[#94A3B8] block mb-2">Class (1 to 12)</label>
                 <div className="grid grid-cols-4 gap-1.5">
                   {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((c) => (
                     <button
@@ -460,7 +462,9 @@ export function ProductsClient({ initialParams }: ProductsClientProps) {
                       type="button"
                       onClick={() => setSelectedClass(String(c))}
                       className={`py-2 rounded-lg border font-bold ${
-                        selectedClass === String(c) ? 'bg-[#F6C94B] text-[#173B67]' : 'bg-white'
+                        selectedClass === String(c)
+                          ? 'bg-[#F6C94B] text-[#173B67] border-[#E5B734]'
+                          : 'bg-[#111A2E] text-[#CBD5E1] border-[#1E293B]'
                       }`}
                     >
                       {c}
@@ -469,18 +473,18 @@ export function ProductsClient({ initialParams }: ProductsClientProps) {
                 </div>
               </div>
 
-              <div className="pt-4 border-t border-[#E2E8F0] flex gap-2">
+              <div className="pt-4 border-t border-[#1E293B] flex gap-2">
                 <button
                   type="button"
                   onClick={clearAllFilters}
-                  className="flex-1 py-3 border border-[#CBD5E1] rounded-xl font-bold text-[#173B67]"
+                  className="flex-1 py-3 border border-[#1E293B] bg-[#111A2E] rounded-xl font-bold text-[#CBD5E1]"
                 >
                   Reset
                 </button>
                 <button
                   type="button"
                   onClick={() => setMobileFilterOpen(false)}
-                  className="flex-1 py-3 bg-[#173B67] text-white rounded-xl font-bold"
+                  className="flex-1 py-3 bg-[#F6C94B] text-[#173B67] rounded-xl font-bold hover:bg-[#E5B734]"
                 >
                   Apply
                 </button>

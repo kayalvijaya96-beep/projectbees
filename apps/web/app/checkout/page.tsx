@@ -75,42 +75,42 @@ export default function CheckoutPage() {
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 space-y-8">
       {/* Page Header */}
-      <div className="border-b border-[#E2E8F0] pb-4 space-y-1">
-        <div className="flex items-center gap-2 text-xs text-[#68778A]">
-          <Link href="/cart" className="hover:text-[#173B67]">Cart</Link>
+      <div className="border-b border-[#1E293B] pb-4 space-y-1">
+        <div className="flex items-center gap-2 text-xs text-[#94A3B8]">
+          <Link href="/cart" className="hover:text-[#F6C94B]">Cart</Link>
           <span>/</span>
-          <span className="font-semibold text-[#173B67]">Cash on Delivery Checkout</span>
+          <span className="font-semibold text-white">Cash on Delivery Checkout</span>
         </div>
-        <h1 className="text-2xl sm:text-3xl font-extrabold font-heading text-[#173B67] tracking-tight">
+        <h1 className="text-2xl sm:text-3xl font-extrabold font-heading text-white tracking-tight">
           Doorstep Cash on Delivery Checkout
         </h1>
-        <p className="text-xs sm:text-sm text-[#68778A]">
+        <p className="text-xs sm:text-sm text-[#94A3B8]">
           Safe, verified order placement with zero advance card payment required.
         </p>
       </div>
 
       {/* Progress Stepper Bar */}
       <div className="flex items-center justify-between max-w-md mx-auto text-xs font-semibold">
-        <div className={`flex items-center gap-1.5 ${step === 'address' ? 'text-[#173B67] font-bold' : 'text-[#68778A]'}`}>
-          <span className={`w-7 h-7 rounded-full flex items-center justify-center text-xs ${step === 'address' ? 'bg-[#173B67] text-white' : 'bg-[#E2E8F0] text-[#68778A]'}`}>
+        <div className={`flex items-center gap-1.5 ${step === 'address' ? 'text-[#F6C94B] font-bold' : 'text-[#94A3B8]'}`}>
+          <span className={`w-7 h-7 rounded-full flex items-center justify-center text-xs ${step === 'address' ? 'bg-[#F6C94B] text-[#173B67] font-bold' : 'bg-[#111A2E] text-[#94A3B8] border border-[#1E293B]'}`}>
             1
           </span>
           <span>Delivery Details</span>
         </div>
 
-        <div className={`h-0.5 flex-1 mx-3 ${step !== 'address' ? 'bg-[#173B67]' : 'bg-[#E2E8F0]'}`} />
+        <div className={`h-0.5 flex-1 mx-3 ${step !== 'address' ? 'bg-[#F6C94B]' : 'bg-[#1E293B]'}`} />
 
-        <div className={`flex items-center gap-1.5 ${step === 'otp' ? 'text-[#173B67] font-bold' : 'text-[#68778A]'}`}>
-          <span className={`w-7 h-7 rounded-full flex items-center justify-center text-xs ${step === 'otp' ? 'bg-[#173B67] text-white' : 'bg-[#E2E8F0] text-[#68778A]'}`}>
+        <div className={`flex items-center gap-1.5 ${step === 'otp' ? 'text-[#F6C94B] font-bold' : 'text-[#94A3B8]'}`}>
+          <span className={`w-7 h-7 rounded-full flex items-center justify-center text-xs ${step === 'otp' ? 'bg-[#F6C94B] text-[#173B67] font-bold' : 'bg-[#111A2E] text-[#94A3B8] border border-[#1E293B]'}`}>
             2
           </span>
           <span>WhatsApp OTP</span>
         </div>
 
-        <div className={`h-0.5 flex-1 mx-3 ${step === 'confirmed' ? 'bg-[#16A34A]' : 'bg-[#E2E8F0]'}`} />
+        <div className={`h-0.5 flex-1 mx-3 ${step === 'confirmed' ? 'bg-[#4ADE80]' : 'bg-[#1E293B]'}`} />
 
-        <div className={`flex items-center gap-1.5 ${step === 'confirmed' ? 'text-[#16A34A] font-bold' : 'text-[#68778A]'}`}>
-          <span className={`w-7 h-7 rounded-full flex items-center justify-center text-xs ${step === 'confirmed' ? 'bg-[#16A34A] text-white' : 'bg-[#E2E8F0] text-[#68778A]'}`}>
+        <div className={`flex items-center gap-1.5 ${step === 'confirmed' ? 'text-[#4ADE80] font-bold' : 'text-[#94A3B8]'}`}>
+          <span className={`w-7 h-7 rounded-full flex items-center justify-center text-xs ${step === 'confirmed' ? 'bg-[#16A34A] text-white' : 'bg-[#111A2E] text-[#94A3B8] border border-[#1E293B]'}`}>
             3
           </span>
           <span>Confirmed</span>
@@ -118,8 +118,8 @@ export default function CheckoutPage() {
       </div>
 
       {error && (
-        <div className="p-4 rounded-2xl bg-[#FEF2F2] border border-[#FECACA] text-[#991B1B] text-xs sm:text-sm flex items-start gap-2.5">
-          <AlertCircle className="w-5 h-5 text-[#DC2626] shrink-0 mt-0.5" />
+        <div className="p-4 rounded-2xl bg-[#2A1515] border border-[#7F1D1D] text-[#FCA5A5] text-xs sm:text-sm flex items-start gap-2.5">
+          <AlertCircle className="w-5 h-5 text-[#EF4444] shrink-0 mt-0.5" />
           <span>{error}</span>
         </div>
       )}
@@ -128,14 +128,14 @@ export default function CheckoutPage() {
       {step === 'address' && (
         <form
           onSubmit={handleProceedToOtp}
-          className="p-6 sm:p-8 rounded-3xl border border-[#E2E8F0] bg-white shadow-soft space-y-6"
+          className="p-6 sm:p-8 rounded-3xl border border-[#1E293B] bg-[#111A2E]/80 backdrop-blur-md shadow-soft space-y-6"
         >
-          <div className="flex items-center justify-between border-b border-[#F1F5F9] pb-3">
-            <h2 className="text-base sm:text-lg font-extrabold font-heading text-[#173B67] flex items-center gap-2">
+          <div className="flex items-center justify-between border-b border-[#1E293B] pb-3">
+            <h2 className="text-base sm:text-lg font-extrabold font-heading text-white flex items-center gap-2">
               <Truck className="w-5 h-5 text-[#F6C94B]" />
               <span>Doorstep Delivery Address</span>
             </h2>
-            <span className="text-xs font-bold text-[#173B67] bg-[#EFF6FF] px-2.5 py-1 rounded-lg">
+            <span className="text-xs font-bold text-[#F6C94B] bg-[#17233B] border border-[#1E3A5F] px-2.5 py-1 rounded-lg">
               Bengaluru &amp; Pan-India COD
             </span>
           </div>
@@ -193,16 +193,16 @@ export default function CheckoutPage() {
           </div>
 
           {/* Child Protection & Parental Consent Checkbox */}
-          <div className="p-4 rounded-2xl bg-[#FEFCE8] border border-[#FEF08A] space-y-2">
+          <div className="p-4 rounded-2xl bg-[#2A230B] border border-[#4A3D12] space-y-2">
             <label className="flex items-start gap-3 cursor-pointer select-none">
               <input
                 type="checkbox"
                 checked={guardianConfirmed}
                 onChange={(e) => setGuardianConfirmed(e.target.checked)}
-                className="mt-1 w-4 h-4 text-[#173B67] rounded border-[#CBD5E1] focus:ring-[#F6C94B]"
+                className="mt-1 w-4 h-4 text-[#F6C94B] rounded border-[#1E293B] focus:ring-[#F6C94B]"
                 required
               />
-              <span className="text-xs sm:text-sm text-[#713F12] leading-relaxed">
+              <span className="text-xs sm:text-sm text-[#FDE047] leading-relaxed">
                 <strong>Parent / Guardian Confirmation:</strong> I confirm that I am the parent, guardian, or an adult authorized to place this school project order. I approve the collection of this mobile number for Cash on Delivery dispatch verification.
               </span>
             </label>
@@ -224,23 +224,23 @@ export default function CheckoutPage() {
       {step === 'otp' && (
         <form
           onSubmit={handleVerifyOtpAndPlaceOrder}
-          className="p-6 sm:p-8 rounded-3xl border border-[#E2E8F0] bg-white shadow-soft space-y-6 max-w-lg mx-auto"
+          className="p-6 sm:p-8 rounded-3xl border border-[#1E293B] bg-[#111A2E]/80 backdrop-blur-md shadow-soft space-y-6 max-w-lg mx-auto"
         >
           <div className="text-center space-y-2">
-            <div className="w-14 h-14 bg-[#ECFDF5] text-[#16A34A] rounded-full flex items-center justify-center mx-auto shadow-2xs">
+            <div className="w-14 h-14 bg-[#0F291E] text-[#4ADE80] border border-[#14532D] rounded-full flex items-center justify-center mx-auto shadow-2xs">
               <MessageSquare className="w-7 h-7" />
             </div>
-            <h2 className="text-xl font-extrabold font-heading text-[#173B67]">
+            <h2 className="text-xl font-extrabold font-heading text-white">
               WhatsApp OTP Verification
             </h2>
-            <p className="text-xs sm:text-sm text-[#68778A] leading-relaxed">
+            <p className="text-xs sm:text-sm text-[#94A3B8] leading-relaxed">
               We have sent a 6-digit confirmation code to parent WhatsApp number{' '}
-              <strong className="text-[#173B67]">+91 {phone}</strong>.
+              <strong className="text-[#F6C94B]">+91 {phone}</strong>.
             </p>
           </div>
 
           <div className="space-y-2">
-            <label className="block text-xs font-bold uppercase tracking-wider text-[#68778A] text-center">
+            <label className="block text-xs font-bold uppercase tracking-wider text-[#94A3B8] text-center">
               Enter 6-Digit Code
             </label>
             <input
@@ -249,11 +249,11 @@ export default function CheckoutPage() {
               onChange={(e) => setOtpCode(e.target.value.replace(/\D/g, ''))}
               placeholder="123456"
               maxLength={6}
-              className="w-full text-center tracking-widest text-2xl font-mono h-14 rounded-2xl border border-[#CBD5E1] bg-[#F5F8FC] focus:border-[#F6C94B] focus:bg-white focus:outline-none"
+              className="w-full text-center tracking-widest text-2xl font-mono h-14 rounded-2xl border border-[#1E293B] bg-[#0E1626] text-white focus:border-[#F6C94B] focus:outline-none"
               autoFocus
               required
             />
-            <p className="text-[11px] text-center text-[#68778A]">
+            <p className="text-[11px] text-center text-[#94A3B8]">
               * Note: For local preview testing, enter any 6 digits (e.g. 123456)
             </p>
           </div>
@@ -262,7 +262,7 @@ export default function CheckoutPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-4 px-6 rounded-xl bg-[#173B67] text-white hover:bg-[#285A91] font-extrabold text-sm sm:text-base shadow-sm transition-all flex items-center justify-center gap-2 cursor-pointer"
+              className="w-full py-4 px-6 rounded-xl bg-[#173B67] text-white hover:bg-[#285A91] border border-[#285A91] font-extrabold text-sm sm:text-base shadow-sm transition-all flex items-center justify-center gap-2 cursor-pointer"
             >
               <span>{loading ? 'Confirming Order...' : `Confirm Cash on Delivery Order (₹${totalAmount})`}</span>
             </button>
@@ -270,7 +270,7 @@ export default function CheckoutPage() {
             <button
               type="button"
               onClick={() => setStep('address')}
-              className="w-full text-xs text-[#68778A] hover:text-[#173B67] font-medium py-1 cursor-pointer"
+              className="w-full text-xs text-[#94A3B8] hover:text-[#F6C94B] font-medium py-1 cursor-pointer"
             >
               ← Change Mobile Number or Delivery Address
             </button>
@@ -280,45 +280,45 @@ export default function CheckoutPage() {
 
       {/* STEP 3: Order Confirmed */}
       {step === 'confirmed' && (
-        <div className="p-8 sm:p-12 rounded-3xl border border-[#E2E8F0] bg-white shadow-soft space-y-6 text-center max-w-lg mx-auto">
-          <div className="w-16 h-16 bg-[#ECFDF5] text-[#16A34A] rounded-full flex items-center justify-center mx-auto shadow-sm">
+        <div className="p-8 sm:p-12 rounded-3xl border border-[#1E293B] bg-[#111A2E]/80 backdrop-blur-md shadow-soft space-y-6 text-center max-w-lg mx-auto">
+          <div className="w-16 h-16 bg-[#0F291E] text-[#4ADE80] border border-[#14532D] rounded-full flex items-center justify-center mx-auto shadow-sm">
             <CheckCircle2 className="w-10 h-10" />
           </div>
 
           <div className="space-y-2">
-            <h2 className="text-2xl font-extrabold font-heading text-[#173B67] tracking-tight">
+            <h2 className="text-2xl font-extrabold font-heading text-white tracking-tight">
               Order Placed Successfully!
             </h2>
-            <p className="text-xs sm:text-sm text-[#68778A]">
+            <p className="text-xs sm:text-sm text-[#94A3B8]">
               Thank you for ordering with ProjectBee. Your curriculum project kit is being packed for delivery.
             </p>
           </div>
 
-          <div className="p-5 rounded-2xl bg-[#F5F8FC] border border-[#E2E8F0] text-left space-y-2.5 text-xs sm:text-sm">
-            <div className="flex justify-between border-b border-[#E2E8F0] pb-2">
-              <span className="text-[#68778A]">Order Reference:</span>
-              <span className="font-mono font-bold text-[#173B67]">{orderNumber}</span>
+          <div className="p-5 rounded-2xl bg-[#0E1626] border border-[#1E293B] text-left space-y-2.5 text-xs sm:text-sm">
+            <div className="flex justify-between border-b border-[#1E293B] pb-2">
+              <span className="text-[#94A3B8]">Order Reference:</span>
+              <span className="font-mono font-bold text-[#F6C94B]">{orderNumber}</span>
             </div>
-            <div className="flex justify-between border-b border-[#E2E8F0] pb-2">
-              <span className="text-[#68778A]">Payment Mode:</span>
-              <span className="font-semibold text-[#854D0E] bg-[#FEF08A] px-2 py-0.5 rounded">
+            <div className="flex justify-between border-b border-[#1E293B] pb-2">
+              <span className="text-[#94A3B8]">Payment Mode:</span>
+              <span className="font-semibold text-[#F6C94B] bg-[#2A230B] border border-[#4A3D12] px-2 py-0.5 rounded">
                 Cash on Delivery (Unpaid)
               </span>
             </div>
-            <div className="flex justify-between border-b border-[#E2E8F0] pb-2">
-              <span className="text-[#68778A]">Total Due on Doorstep Arrival:</span>
-              <span className="font-extrabold text-[#173B67] text-base">₹{totalAmount}.00</span>
+            <div className="flex justify-between border-b border-[#1E293B] pb-2">
+              <span className="text-[#94A3B8]">Total Due on Doorstep Arrival:</span>
+              <span className="font-extrabold text-[#F6C94B] text-base">₹{totalAmount}.00</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-[#68778A]">Recipient:</span>
-              <span className="font-semibold text-[#173B67]">{recipientName}</span>
+              <span className="text-[#94A3B8]">Recipient:</span>
+              <span className="font-semibold text-white">{recipientName}</span>
             </div>
           </div>
 
           <div className="pt-2 flex flex-col sm:flex-row gap-3">
             <Link
               href="/"
-              className="flex-1 py-3 px-4 rounded-xl border border-[#CBD5E1] text-[#173B67] font-bold text-xs hover:bg-[#F5F8FC] transition-colors"
+              className="flex-1 py-3 px-4 rounded-xl border border-[#1E293B] bg-[#111A2E] text-white font-bold text-xs hover:bg-[#17233B] transition-colors"
             >
               Back to Home
             </Link>

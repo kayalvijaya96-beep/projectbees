@@ -83,8 +83,8 @@ export function NavigationBar() {
 
       {/* Main Sticky Navbar */}
       <header
-        className={`sticky top-0 z-50 bg-white border-b transition-all duration-200 ${
-          isScrolled ? 'shadow-md border-[#CBD5E1]' : 'border-[#E2E8F0]'
+        className={`sticky top-0 z-50 bg-[#0B111E]/90 backdrop-blur-md border-b transition-all duration-200 ${
+          isScrolled ? 'shadow-md border-[#1E293B] bg-[#0B111E]/95' : 'border-[#1E293B]/70'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -95,11 +95,11 @@ export function NavigationBar() {
             </Link>
 
             {/* Desktop Navigation Links */}
-            <nav className="hidden lg:flex items-center gap-6 text-sm font-medium text-[#263447]">
-              <Link href="/" className="hover:text-[#173B67] hover:font-semibold transition-colors">
+            <nav className="hidden lg:flex items-center gap-6 text-sm font-medium text-[#CBD5E1]">
+              <Link href="/" className="hover:text-[#F6C94B] hover:font-semibold transition-colors">
                 Home
               </Link>
-              <Link href="/products" className="hover:text-[#173B67] hover:font-semibold transition-colors">
+              <Link href="/products" className="hover:text-[#F6C94B] hover:font-semibold transition-colors">
                 Shop All Projects
               </Link>
 
@@ -111,33 +111,33 @@ export function NavigationBar() {
               >
                 <button
                   type="button"
-                  className="flex items-center gap-1 hover:text-[#173B67] hover:font-semibold transition-colors py-2 cursor-pointer"
+                  className="flex items-center gap-1 hover:text-[#F6C94B] hover:font-semibold transition-colors py-2 cursor-pointer text-[#CBD5E1]"
                   onClick={() => setClassDropdownOpen(!classDropdownOpen)}
                 >
                   <span>Browse by Class</span>
-                  <ChevronDown className="w-4 h-4 text-[#68778A]" />
+                  <ChevronDown className="w-4 h-4 text-[#94A3B8]" />
                 </button>
 
                 {classDropdownOpen && (
-                  <div className="absolute top-full left-0 w-72 bg-white rounded-2xl shadow-card-hover border border-[#E2E8F0] p-3 py-2 space-y-1">
+                  <div className="absolute top-full left-0 w-72 bg-[#111A2E] rounded-2xl shadow-card-hover border border-[#1E293B] p-3 py-2 space-y-1">
                     {classGroups.map((group) => (
                       <Link
                         key={group.name}
                         href={group.href}
                         onClick={() => setClassDropdownOpen(false)}
-                        className="block p-2.5 rounded-xl hover:bg-[#F5F8FC] transition-colors group"
+                        className="block p-2.5 rounded-xl hover:bg-[#17233B] transition-colors group"
                       >
-                        <div className="font-semibold text-[#173B67] text-sm group-hover:text-[#285A91]">
+                        <div className="font-semibold text-[#F6C94B] text-sm group-hover:text-white">
                           {group.name}
                         </div>
-                        <div className="text-xs text-[#68778A]">{group.label}</div>
+                        <div className="text-xs text-[#94A3B8]">{group.label}</div>
                       </Link>
                     ))}
-                    <div className="pt-2 border-t border-[#E2E8F0] text-center">
+                    <div className="pt-2 border-t border-[#1E293B] text-center">
                       <Link
                         href="/products"
                         onClick={() => setClassDropdownOpen(false)}
-                        className="text-xs font-semibold text-[#173B67] hover:text-[#285A91]"
+                        className="text-xs font-semibold text-[#F6C94B] hover:text-white"
                       >
                         View All Classes 1 to 12 →
                       </Link>
@@ -154,23 +154,23 @@ export function NavigationBar() {
               >
                 <button
                   type="button"
-                  className="flex items-center gap-1 hover:text-[#173B67] hover:font-semibold transition-colors py-2 cursor-pointer"
+                  className="flex items-center gap-1 hover:text-[#F6C94B] hover:font-semibold transition-colors py-2 cursor-pointer text-[#CBD5E1]"
                   onClick={() => setCategoryDropdownOpen(!categoryDropdownOpen)}
                 >
                   <span>Categories</span>
-                  <ChevronDown className="w-4 h-4 text-[#68778A]" />
+                  <ChevronDown className="w-4 h-4 text-[#94A3B8]" />
                 </button>
 
                 {categoryDropdownOpen && (
-                  <div className="absolute top-full left-0 w-80 bg-white rounded-2xl shadow-card-hover border border-[#E2E8F0] p-3 py-2 space-y-1">
+                  <div className="absolute top-full left-0 w-80 bg-[#111A2E] rounded-2xl shadow-card-hover border border-[#1E293B] p-3 py-2 space-y-1">
                     {categories.map((cat) => (
                       <Link
                         key={cat.name}
                         href={cat.href}
                         onClick={() => setCategoryDropdownOpen(false)}
-                        className="block p-2.5 rounded-xl hover:bg-[#F5F8FC] transition-colors group"
+                        className="block p-2.5 rounded-xl hover:bg-[#17233B] transition-colors group"
                       >
-                        <div className="font-semibold text-[#173B67] text-sm group-hover:text-[#285A91]">
+                        <div className="font-semibold text-white text-sm group-hover:text-[#F6C94B]">
                           {cat.name}
                         </div>
                       </Link>
@@ -179,10 +179,10 @@ export function NavigationBar() {
                 )}
               </div>
 
-              <Link href="/about" className="hover:text-[#173B67] hover:font-semibold transition-colors">
+              <Link href="/about" className="hover:text-[#F6C94B] hover:font-semibold transition-colors">
                 About Us
               </Link>
-              <Link href="/contact" className="hover:text-[#173B67] hover:font-semibold transition-colors">
+              <Link href="/contact" className="hover:text-[#F6C94B] hover:font-semibold transition-colors">
                 Contact Us
               </Link>
             </nav>
@@ -190,14 +190,14 @@ export function NavigationBar() {
             {/* Search Input Bar (Desktop) */}
             <div className="hidden md:flex flex-1 max-w-xs xl:max-w-sm mx-2">
               <form action="/products" method="GET" className="relative w-full">
-                <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#68778A]" />
+                <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#94A3B8]" />
                 <input
                   type="text"
                   name="q"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Search working models, charts..."
-                  className="w-full h-10 pl-10 pr-4 text-xs bg-[#F5F8FC] border border-[#CBD5E1] rounded-xl text-[#263447] placeholder:text-[#68778A] focus:outline-none focus:border-[#F6C94B] focus:bg-white focus:ring-2 focus:ring-[#F6C94B]/20 transition-all"
+                  className="w-full h-10 pl-10 pr-4 text-xs bg-[#111A2E] border border-[#1E293B] rounded-xl text-[#F1F5F9] placeholder:text-[#64748B] focus:outline-none focus:border-[#F6C94B] focus:bg-[#17233B] focus:ring-2 focus:ring-[#F6C94B]/20 transition-all"
                 />
               </form>
             </div>
@@ -207,7 +207,7 @@ export function NavigationBar() {
               {/* Project Finder Pill */}
               <Link
                 href="/products#project-finder"
-                className="hidden xl:inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold bg-[#FEF08A]/60 text-[#713F12] border border-[#FACC15] rounded-xl hover:bg-[#FEF08A] transition-colors"
+                className="hidden xl:inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold bg-[#F6C94B]/15 text-[#F6C94B] border border-[#F6C94B]/30 rounded-xl hover:bg-[#F6C94B]/25 transition-colors"
               >
                 <Compass className="w-3.5 h-3.5" />
                 <span>Project Finder</span>
@@ -216,9 +216,9 @@ export function NavigationBar() {
               {/* Sign In */}
               <Link
                 href="/auth"
-                className="flex items-center gap-1.5 px-3 py-2 text-xs sm:text-sm font-medium text-[#263447] hover:text-[#173B67] hover:bg-[#F5F8FC] rounded-xl transition-colors"
+                className="flex items-center gap-1.5 px-3 py-2 text-xs sm:text-sm font-medium text-[#CBD5E1] hover:text-white hover:bg-[#17233B] rounded-xl transition-colors"
               >
-                <User className="w-4 h-4 text-[#68778A]" />
+                <User className="w-4 h-4 text-[#94A3B8]" />
                 <span className="hidden sm:inline">Sign In</span>
               </Link>
 
@@ -240,7 +240,7 @@ export function NavigationBar() {
               <button
                 type="button"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="lg:hidden p-2 text-[#263447] hover:bg-[#F5F8FC] rounded-xl transition-colors"
+                className="lg:hidden p-2 text-[#CBD5E1] hover:bg-[#17233B] rounded-xl transition-colors"
                 aria-label="Toggle Mobile Menu"
               >
                 {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -251,36 +251,36 @@ export function NavigationBar() {
 
         {/* Mobile Navigation Drawer */}
         {mobileMenuOpen && (
-          <div className="lg:hidden border-t border-[#E2E8F0] bg-white px-4 pt-3 pb-6 space-y-4 shadow-lg animate-in fade-in duration-200">
+          <div className="lg:hidden border-t border-[#1E293B] bg-[#0E1626] px-4 pt-3 pb-6 space-y-4 shadow-lg animate-in fade-in duration-200">
             {/* Search form in Mobile */}
             <form action="/products" method="GET" className="relative w-full">
-              <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#68778A]" />
+              <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#94A3B8]" />
               <input
                 type="text"
                 name="q"
                 placeholder="Search projects, topics, classes..."
-                className="w-full h-11 pl-10 pr-4 text-sm bg-[#F5F8FC] border border-[#CBD5E1] rounded-xl text-[#263447] focus:outline-none focus:border-[#F6C94B]"
+                className="w-full h-11 pl-10 pr-4 text-sm bg-[#111A2E] border border-[#1E293B] rounded-xl text-[#F1F5F9] focus:outline-none focus:border-[#F6C94B]"
               />
             </form>
 
-            <nav className="flex flex-col space-y-1 text-sm font-medium text-[#263447]">
+            <nav className="flex flex-col space-y-1 text-sm font-medium text-[#CBD5E1]">
               <Link
                 href="/"
                 onClick={() => setMobileMenuOpen(false)}
-                className="px-3 py-2.5 rounded-xl hover:bg-[#F5F8FC] hover:text-[#173B67]"
+                className="px-3 py-2.5 rounded-xl hover:bg-[#17233B] hover:text-[#F6C94B]"
               >
                 Home
               </Link>
               <Link
                 href="/products"
                 onClick={() => setMobileMenuOpen(false)}
-                className="px-3 py-2.5 rounded-xl hover:bg-[#F5F8FC] hover:text-[#173B67]"
+                className="px-3 py-2.5 rounded-xl hover:bg-[#17233B] hover:text-[#F6C94B]"
               >
                 Shop All Projects
               </Link>
 
               {/* Classes Sub-links */}
-              <div className="pt-2 pb-1 px-3 text-xs font-bold uppercase tracking-wider text-[#68778A]">
+              <div className="pt-2 pb-1 px-3 text-xs font-bold uppercase tracking-wider text-[#94A3B8]">
                 Browse by Class
               </div>
               <div className="grid grid-cols-2 gap-1 px-2">
@@ -289,7 +289,7 @@ export function NavigationBar() {
                     key={group.name}
                     href={group.href}
                     onClick={() => setMobileMenuOpen(false)}
-                    className="p-2 text-xs rounded-lg bg-[#F5F8FC] text-[#173B67] font-medium"
+                    className="p-2 text-xs rounded-lg bg-[#111A2E] text-[#F6C94B] font-medium"
                   >
                     {group.name}
                   </Link>
@@ -297,7 +297,7 @@ export function NavigationBar() {
               </div>
 
               {/* Categories Sub-links */}
-              <div className="pt-3 pb-1 px-3 text-xs font-bold uppercase tracking-wider text-[#68778A]">
+              <div className="pt-3 pb-1 px-3 text-xs font-bold uppercase tracking-wider text-[#94A3B8]">
                 Categories
               </div>
               {categories.map((cat) => (
@@ -305,31 +305,31 @@ export function NavigationBar() {
                   key={cat.name}
                   href={cat.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="px-3 py-2 text-xs text-[#263447] hover:text-[#173B67] hover:bg-[#F5F8FC] rounded-lg"
+                  className="px-3 py-2 text-xs text-[#CBD5E1] hover:text-[#F6C94B] hover:bg-[#17233B] rounded-lg"
                 >
                   • {cat.name}
                 </Link>
               ))}
 
-              <div className="pt-2 border-t border-[#E2E8F0] space-y-1">
+              <div className="pt-2 border-t border-[#1E293B] space-y-1">
                 <Link
                   href="/about"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="block px-3 py-2 rounded-xl hover:bg-[#F5F8FC]"
+                  className="block px-3 py-2 rounded-xl hover:bg-[#17233B]"
                 >
                   About Us
                 </Link>
                 <Link
                   href="/contact"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="block px-3 py-2 rounded-xl hover:bg-[#F5F8FC]"
+                  className="block px-3 py-2 rounded-xl hover:bg-[#17233B]"
                 >
                   Contact &amp; FAQs
                 </Link>
                 <Link
                   href="/shipping"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="block px-3 py-2 rounded-xl hover:bg-[#F5F8FC]"
+                  className="block px-3 py-2 rounded-xl hover:bg-[#17233B]"
                 >
                   Shipping &amp; COD Policy
                 </Link>

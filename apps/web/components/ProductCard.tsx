@@ -40,9 +40,9 @@ export function ProductCard({ product, onQuickView }: ProductCardProps) {
   const isFavorited = isInWishlist(product.id);
 
   return (
-    <div className="group relative rounded-2xl border border-[#E2E8F0] bg-white overflow-hidden shadow-soft hover:shadow-card-hover hover:border-[#173B67]/30 transition-all duration-300 flex flex-col h-full">
+    <div className="group relative rounded-2xl border border-[#1E293B] bg-[#111A2E]/80 backdrop-blur-md overflow-hidden shadow-soft hover:shadow-card-hover hover:border-[#F6C94B]/50 transition-all duration-300 flex flex-col h-full">
       {/* Product Image Container */}
-      <Link href={`/products/${product.slug}`} className="block relative aspect-4/3 w-full bg-[#F5F8FC] overflow-hidden border-b border-[#F1F5F9]">
+      <Link href={`/products/${product.slug}`} className="block relative aspect-4/3 w-full bg-[#0E1626] overflow-hidden border-b border-[#1E293B]">
         <Image
           src={product.image_url}
           alt={product.title}
@@ -54,7 +54,7 @@ export function ProductCard({ product, onQuickView }: ProductCardProps) {
         {/* Top Badges */}
         <div className="absolute top-3 left-3 flex flex-col gap-1.5 z-10">
           {product.badge && (
-            <span className="bg-[#173B67] text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow-sm tracking-wide">
+            <span className="bg-[#173B67] text-[#F6C94B] border border-[#285A91] text-[10px] font-bold px-2 py-0.5 rounded-full shadow-sm tracking-wide">
               {product.badge}
             </span>
           )}
@@ -73,7 +73,7 @@ export function ProductCard({ product, onQuickView }: ProductCardProps) {
           className={`absolute top-3 right-3 p-2 rounded-full backdrop-blur-xs transition-all z-10 cursor-pointer ${
             isFavorited
               ? 'bg-[#FEF2F2] text-[#DC2626] shadow-sm'
-              : 'bg-white/90 text-[#68778A] hover:text-[#DC2626] hover:bg-white shadow-2xs'
+              : 'bg-[#111A2E]/80 text-[#94A3B8] hover:text-[#DC2626] hover:bg-[#1E293B] shadow-2xs'
           }`}
         >
           <Heart className={`w-4 h-4 ${isFavorited ? 'fill-current' : ''}`} />
@@ -81,7 +81,7 @@ export function ProductCard({ product, onQuickView }: ProductCardProps) {
 
         {/* Quick View Button overlay on desktop */}
         {onQuickView && (
-          <div className="absolute inset-0 bg-[#173B67]/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+          <div className="absolute inset-0 bg-[#0B111E]/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
             <button
               type="button"
               onClick={(e) => {
@@ -89,7 +89,7 @@ export function ProductCard({ product, onQuickView }: ProductCardProps) {
                 e.stopPropagation();
                 onQuickView(product);
               }}
-              className="px-3.5 py-1.5 bg-white text-[#173B67] text-xs font-semibold rounded-xl shadow-md flex items-center gap-1.5 hover:bg-[#F6C94B] transition-colors"
+              className="px-3.5 py-1.5 bg-[#F6C94B] text-[#173B67] text-xs font-bold rounded-xl shadow-md flex items-center gap-1.5 hover:bg-[#E5B734] transition-colors cursor-pointer"
             >
               <Eye className="w-3.5 h-3.5" />
               <span>Quick View</span>
@@ -103,10 +103,10 @@ export function ProductCard({ product, onQuickView }: ProductCardProps) {
         <div className="space-y-1.5">
           {/* Class & Board Tags */}
           <div className="flex items-center justify-between text-xs gap-1 flex-wrap">
-            <span className="bg-[#EFF6FF] text-[#1E40AF] font-semibold text-[11px] px-2 py-0.5 rounded-md border border-[#BFDBFE]">
+            <span className="bg-[#17233B] text-[#93C5FD] font-semibold text-[11px] px-2 py-0.5 rounded-md border border-[#285A91]/50">
               {product.class_range || `Class ${product.class_number}`}
             </span>
-            <span className="text-[#68778A] text-[11px] font-medium bg-[#F5F8FC] px-1.5 py-0.5 rounded">
+            <span className="text-[#94A3B8] text-[11px] font-medium bg-[#0E1626] px-1.5 py-0.5 rounded border border-[#1E293B]">
               {product.board}
             </span>
           </div>
@@ -114,7 +114,7 @@ export function ProductCard({ product, onQuickView }: ProductCardProps) {
           {/* Product Title */}
           <Link
             href={`/products/${product.slug}`}
-            className="block font-heading font-bold text-sm sm:text-base text-[#263447] hover:text-[#173B67] line-clamp-2 leading-snug pt-1"
+            className="block font-heading font-bold text-sm sm:text-base text-white hover:text-[#F6C94B] line-clamp-2 leading-snug pt-1 transition-colors"
           >
             {product.title}
           </Link>
@@ -124,29 +124,29 @@ export function ProductCard({ product, onQuickView }: ProductCardProps) {
             <div className="flex items-center gap-1.5 pt-0.5">
               <div className="flex items-center text-[#F6C94B]">
                 <Star className="w-3.5 h-3.5 fill-current" />
-                <span className="text-xs font-bold text-[#263447] ml-1">{product.rating}</span>
+                <span className="text-xs font-bold text-white ml-1">{product.rating}</span>
               </div>
               {product.reviews_count && (
-                <span className="text-[11px] text-[#68778A]">({product.reviews_count} reviews)</span>
+                <span className="text-[11px] text-[#94A3B8]">({product.reviews_count} reviews)</span>
               )}
             </div>
           )}
         </div>
 
         {/* Pricing & CTA Controls */}
-        <div className="pt-3 border-t border-[#F1F5F9] space-y-3">
+        <div className="pt-3 border-t border-[#1E293B] space-y-3">
           <div className="flex items-baseline justify-between">
             <div className="flex items-baseline gap-1.5">
-              <span className="text-lg sm:text-xl font-extrabold text-[#173B67]">
+              <span className="text-lg sm:text-xl font-extrabold text-[#F6C94B]">
                 ₹{product.selling_price}
               </span>
               {product.compare_at_price && (
-                <span className="text-xs text-[#68778A] line-through">
+                <span className="text-xs text-[#64748B] line-through">
                   ₹{product.compare_at_price}
                 </span>
               )}
             </div>
-            <span className="text-[10px] font-bold text-[#16A34A] bg-[#ECFDF5] px-2 py-0.5 rounded-md">
+            <span className="text-[10px] font-bold text-[#34D399] bg-[#064E3B]/40 px-2 py-0.5 rounded-md border border-[#059669]/30">
               100% COD
             </span>
           </div>
@@ -154,7 +154,7 @@ export function ProductCard({ product, onQuickView }: ProductCardProps) {
           <div className="grid grid-cols-2 gap-2 pt-1">
             <Link
               href={`/products/${product.slug}`}
-              className="w-full text-center py-2 px-2 text-xs font-semibold text-[#173B67] border border-[#CBD5E1] rounded-xl hover:bg-[#F5F8FC] hover:border-[#173B67]/40 transition-colors"
+              className="w-full text-center py-2 px-2 text-xs font-semibold text-white border border-[#334155] rounded-xl hover:bg-[#1E293B] hover:border-[#F6C94B]/40 transition-colors"
             >
               View Details
             </Link>

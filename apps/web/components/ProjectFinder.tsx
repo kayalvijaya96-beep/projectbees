@@ -59,34 +59,34 @@ export function ProjectFinder() {
   };
 
   return (
-    <section id="project-finder" className="rounded-3xl bg-gradient-to-br from-[#173B67] to-[#285A91] text-white p-6 sm:p-10 shadow-card">
+    <section id="project-finder" className="rounded-3xl bg-[#111A2E]/90 border border-[#1E293B] backdrop-blur-md text-white p-6 sm:p-10 shadow-card">
       <div className="max-w-4xl mx-auto space-y-8">
         {/* Header */}
         <div className="text-center space-y-3">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F6C94B]/20 text-[#F6C94B] border border-[#F6C94B]/30 text-xs font-bold uppercase tracking-wider">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F6C94B]/15 text-[#F6C94B] border border-[#F6C94B]/30 text-xs font-bold uppercase tracking-wider">
             <Compass className="w-4 h-4" />
             <span>Interactive Tool</span>
           </div>
           <h2 className="text-2xl sm:text-4xl font-extrabold font-heading tracking-tight text-white">
             Find the Perfect School Project in Seconds
           </h2>
-          <p className="text-sm sm:text-base text-slate-200 max-w-2xl mx-auto">
+          <p className="text-sm sm:text-base text-[#94A3B8] max-w-2xl mx-auto">
             Answer a few quick questions to discover curriculum-tailored science models, exhibition kits, and charts that match your student’s grade and syllabus.
           </p>
         </div>
 
         {/* Filter Controls Box */}
-        <div className="bg-white rounded-2xl p-6 sm:p-8 text-[#263447] shadow-lg space-y-6">
+        <div className="bg-[#0E1626] border border-[#1E293B] rounded-2xl p-6 sm:p-8 text-[#F1F5F9] shadow-lg space-y-6">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {/* Class Selector */}
             <div className="space-y-1.5">
-              <label className="block text-xs font-bold uppercase tracking-wider text-[#68778A]">
+              <label className="block text-xs font-bold uppercase tracking-wider text-[#94A3B8]">
                 1. Student Class
               </label>
               <select
                 value={selectedClass}
                 onChange={(e) => setSelectedClass(e.target.value)}
-                className="w-full h-11 px-3.5 rounded-xl border border-[#CBD5E1] bg-[#F5F8FC] text-sm font-semibold text-[#173B67] focus:outline-none focus:border-[#F6C94B]"
+                className="w-full h-11 px-3.5 rounded-xl border border-[#1E293B] bg-[#111A2E] text-sm font-semibold text-white focus:outline-none focus:border-[#F6C94B]"
               >
                 <option value="all">All Classes (1 to 12)</option>
                 {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((c) => (
@@ -99,13 +99,13 @@ export function ProjectFinder() {
 
             {/* Board Selector */}
             <div className="space-y-1.5">
-              <label className="block text-xs font-bold uppercase tracking-wider text-[#68778A]">
+              <label className="block text-xs font-bold uppercase tracking-wider text-[#94A3B8]">
                 2. Curriculum Board
               </label>
               <select
                 value={selectedBoard}
                 onChange={(e) => setSelectedBoard(e.target.value)}
-                className="w-full h-11 px-3.5 rounded-xl border border-[#CBD5E1] bg-[#F5F8FC] text-sm font-semibold text-[#173B67] focus:outline-none focus:border-[#F6C94B]"
+                className="w-full h-11 px-3.5 rounded-xl border border-[#1E293B] bg-[#111A2E] text-sm font-semibold text-white focus:outline-none focus:border-[#F6C94B]"
               >
                 <option value="all">All Boards (CBSE &amp; ICSE)</option>
                 <option value="CBSE">CBSE Board</option>
@@ -115,13 +115,13 @@ export function ProjectFinder() {
 
             {/* Category Selector */}
             <div className="space-y-1.5">
-              <label className="block text-xs font-bold uppercase tracking-wider text-[#68778A]">
+              <label className="block text-xs font-bold uppercase tracking-wider text-[#94A3B8]">
                 3. Project Type
               </label>
               <select
                 value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value)}
-                className="w-full h-11 px-3.5 rounded-xl border border-[#CBD5E1] bg-[#F5F8FC] text-sm font-semibold text-[#173B67] focus:outline-none focus:border-[#F6C94B]"
+                className="w-full h-11 px-3.5 rounded-xl border border-[#1E293B] bg-[#111A2E] text-sm font-semibold text-white focus:outline-none focus:border-[#F6C94B]"
               >
                 <option value="all">All Project Types</option>
                 <option value="working-science-models">Working Science Models</option>
@@ -134,9 +134,9 @@ export function ProjectFinder() {
 
             {/* Budget Range Slider */}
             <div className="space-y-1.5">
-              <div className="flex justify-between items-center text-xs font-bold uppercase tracking-wider text-[#68778A]">
+              <div className="flex justify-between items-center text-xs font-bold uppercase tracking-wider text-[#94A3B8]">
                 <span>4. Max Budget</span>
-                <span className="text-[#173B67] font-extrabold text-sm">₹{maxBudget}</span>
+                <span className="text-[#F6C94B] font-extrabold text-sm">₹{maxBudget}</span>
               </div>
               <input
                 type="range"
@@ -145,9 +145,9 @@ export function ProjectFinder() {
                 step="50"
                 value={maxBudget}
                 onChange={(e) => setMaxBudget(Number(e.target.value))}
-                className="w-full h-2 bg-[#E2E8F0] rounded-lg appearance-none cursor-pointer accent-[#F6C94B] mt-3"
+                className="w-full h-2 bg-[#1E293B] rounded-lg appearance-none cursor-pointer accent-[#F6C94B] mt-3"
               />
-              <div className="flex justify-between text-[10px] text-[#68778A]">
+              <div className="flex justify-between text-[10px] text-[#94A3B8]">
                 <span>₹250</span>
                 <span>₹1000</span>
               </div>
@@ -155,14 +155,14 @@ export function ProjectFinder() {
           </div>
 
           {/* Filter Status & Reset */}
-          <div className="pt-2 border-t border-[#F1F5F9] flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
-            <div className="text-[#68778A]">
-              Showing <strong className="text-[#173B67]">{filteredProducts.length}</strong> matching school projects from catalogue
+          <div className="pt-2 border-t border-[#1E293B] flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
+            <div className="text-[#94A3B8]">
+              Showing <strong className="text-[#F6C94B]">{filteredProducts.length}</strong> matching school projects from catalogue
             </div>
             <button
               type="button"
               onClick={handleReset}
-              className="text-[#173B67] hover:text-[#285A91] font-semibold flex items-center gap-1 cursor-pointer"
+              className="text-[#F6C94B] hover:text-[#E5B734] font-semibold flex items-center gap-1 cursor-pointer"
             >
               <RotateCcw className="w-3.5 h-3.5" />
               <span>Reset Filters</span>
@@ -173,9 +173,9 @@ export function ProjectFinder() {
         {/* Results Grid */}
         <div>
           {filteredProducts.length === 0 ? (
-            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 text-center text-white space-y-3 border border-white/10">
+            <div className="bg-[#0E1626]/80 rounded-2xl p-8 text-center text-white space-y-3 border border-[#1E293B]">
               <p className="text-base font-semibold">No exact matches for this criteria</p>
-              <p className="text-xs text-slate-300">
+              <p className="text-xs text-[#94A3B8]">
                 Try raising your budget or selecting &quot;All Project Types&quot; to see available options.
               </p>
               <button

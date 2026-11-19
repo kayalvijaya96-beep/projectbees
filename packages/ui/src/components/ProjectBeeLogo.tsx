@@ -75,11 +75,11 @@ export const ProjectBeeLogo: React.FC<ProjectBeeLogoProps> = ({
 
       {/* Typography */}
       <div className="flex flex-col leading-tight">
-        <span className={cn('tracking-tight font-heading text-[#173B67]', currentSize.text)}>
+        <span className={cn('tracking-tight font-heading text-white', currentSize.text)}>
           Project<span className="text-[#F6C94B]">Bee</span>
         </span>
         {showTagline && (
-          <span className={cn('font-medium text-[#68778A] tracking-wider uppercase', currentSize.tag)}>
+          <span className={cn('font-medium text-[#94A3B8] tracking-wider uppercase', currentSize.tag)}>
             CBSE & ICSE Projects
           </span>
         )}

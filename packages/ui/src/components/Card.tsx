@@ -9,7 +9,7 @@ export const Card: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
   return (
     <div
       className={cn(
-        'rounded-2xl border border-[#E2E8F0] bg-white p-6 shadow-soft text-[#263447] transition-all duration-200 hover:shadow-card hover:border-[#CBD5E1]',
+        'rounded-2xl border border-[#1E293B] bg-[#111A2E]/80 backdrop-blur-md p-6 shadow-soft text-[#F1F5F9] transition-all duration-200 hover:shadow-card hover:border-[#285A91]/50',
         className
       )}
       {...props}

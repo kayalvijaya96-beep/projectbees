@@ -3,6 +3,7 @@ import './globals.css';
 import { Inter, Poppins } from 'next/font/google';
 import { NavigationBar } from '@/components/NavigationBar';
 import { Footer } from '@/components/Footer';
+import { AnimatedBackground } from '@/components/AnimatedBackground';
 import { CartProvider } from '@/lib/cart-context';
 import { WishlistProvider } from '@/lib/wishlist-context';
 
@@ -48,15 +49,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${poppins.variable}`}>
-      <body className="min-h-screen flex flex-col bg-[#F5F8FC] text-[#263447] antialiased selection:bg-[#F6C94B]/30 selection:text-[#173B67]">
+    <html lang="en" className={`${inter.variable} ${poppins.variable} dark`}>
+      <body className="min-h-screen flex flex-col bg-[#0B111E] text-[#F1F5F9] antialiased selection:bg-[#F6C94B]/30 selection:text-[#F6C94B] relative">
         <CartProvider>
           <WishlistProvider>
+            {/* Animated Ambient Background */}
+            <AnimatedBackground />
+
             {/* Redesigned Navigation Bar */}
             <NavigationBar />
 
             {/* Main Page Content */}
-            <main className="flex-1">{children}</main>
+            <main className="flex-1 relative z-10">{children}</main>
 
             {/* Redesigned Accessible Footer */}
             <Footer />

@@ -7,20 +7,23 @@
     --primary: #173B67;
     --secondary: #285A91;
     --yellow: #F6C94B;
-    --bg: #F5F8FC;
-    --text: #263447;
-    --muted: #68778A;
+    --bg: #0B111E;
+    --card: #111A2E;
+    --text: #F1F5F9;
+    --muted: #94A3B8;
   }
 
   body {
-    color: #263447;
-    background-color: #F5F8FC;
+    color: #F1F5F9;
+    background-color: #0B111E;
     font-family: var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     -webkit-tap-highlight-color: transparent;
+    overflow-x: hidden;
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-poppins), system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    color: #FFFFFF;
   }
 }
 
@@ -30,19 +33,57 @@
   outline-offset: 2px;
 }
 
-/* Custom Scrollbar */
+/* Custom Dark Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #F1F5F9;
+  background: #0B111E;
 }
 ::-webkit-scrollbar-thumb {
-  background: #CBD5E1;
+  background: #1E293B;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #94A3B8;
+  background: #334155;
 }
 
+/* Subtle Animated Ambient Background Mesh */
+@keyframes floatParticle {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0.2;
+  }
+  50% {
+    transform: translateY(-25px) rotate(180deg);
+    opacity: 0.55;
+  }
+  100% {
+    transform: translateY(0px) rotate(360deg);
+    opacity: 0.2;
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.25;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.45;
+    transform: scale(1.1);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 12s ease-in-out infinite;
+}
+
+.animate-float-slow {
+  animation: floatParticle 18s ease-in-out infinite;
+}
+
+.animate-float-reverse {
+  animation: floatParticle 22s ease-in-out infinite reverse;
+}

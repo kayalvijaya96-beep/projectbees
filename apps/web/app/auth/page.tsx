@@ -47,16 +47,16 @@ export default function AuthPage() {
 
   return (
     <div className="min-h-[75vh] flex items-center justify-center px-4 py-12">
-      <div className="w-full max-w-md p-6 sm:p-8 rounded-3xl border border-[#E2E8F0] bg-white shadow-soft space-y-6">
+      <div className="w-full max-w-md p-6 sm:p-8 rounded-3xl border border-[#1E293B] bg-[#111A2E]/80 backdrop-blur-md shadow-soft space-y-6">
         <div className="text-center space-y-2">
           <ProjectBeeLogo size="md" className="mx-auto" showTagline={true} />
-          <h1 className="text-xl font-extrabold font-heading text-[#173B67] tracking-tight pt-2">
+          <h1 className="text-xl font-extrabold font-heading text-white tracking-tight pt-2">
             {stage === 'email' && 'Sign in to ProjectBee'}
             {stage === 'otp' && 'Check Your Email'}
             {stage === 'onboarding' && 'Personalize Your Catalogue'}
             {stage === 'done' && 'Welcome to ProjectBee!'}
           </h1>
-          <p className="text-xs text-[#68778A]">
+          <p className="text-xs text-[#94A3B8]">
             {stage === 'email' && 'Passwordless login via Email OTP for students & parents.'}
             {stage === 'otp' && `Enter the 6-digit verification code sent to ${email}.`}
             {stage === 'onboarding' && 'Select class & board to view tailored school project recommendations.'}
@@ -65,7 +65,7 @@ export default function AuthPage() {
         </div>
 
         {error && (
-          <div className="p-3.5 rounded-xl bg-[#FEF2F2] border border-[#FECACA] text-xs text-[#991B1B] font-medium">
+          <div className="p-3.5 rounded-xl bg-[#2A1515] border border-[#7F1D1D] text-xs text-[#FCA5A5] font-medium">
             {error}
           </div>
         )}
@@ -74,7 +74,7 @@ export default function AuthPage() {
         {stage === 'email' && (
           <form onSubmit={handleRequestOtp} className="space-y-4">
             <div className="space-y-1.5 text-left">
-              <label className="block text-xs font-bold uppercase tracking-wider text-[#68778A]">
+              <label className="block text-xs font-bold uppercase tracking-wider text-[#94A3B8]">
                 Email Address
               </label>
               <input
@@ -83,7 +83,7 @@ export default function AuthPage() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="parent@example.com"
-                className="w-full h-11 px-3.5 rounded-xl border border-[#CBD5E1] bg-[#F5F8FC] text-sm text-[#263447] focus:outline-none focus:border-[#F6C94B] focus:bg-white"
+                className="w-full h-11 px-3.5 rounded-xl border border-[#1E293B] bg-[#0E1626] text-sm text-white placeholder:text-[#64748B] focus:outline-none focus:border-[#F6C94B]"
               />
             </div>
 
@@ -94,8 +94,8 @@ export default function AuthPage() {
               <span>Send Email OTP Code →</span>
             </button>
 
-            <div className="flex items-center gap-1.5 justify-center text-[11px] text-[#68778A] pt-1">
-              <ShieldCheck className="w-3.5 h-3.5 text-[#16A34A]" />
+            <div className="flex items-center gap-1.5 justify-center text-[11px] text-[#94A3B8] pt-1">
+              <ShieldCheck className="w-3.5 h-3.5 text-[#4ADE80]" />
               <span>Passwordless • No account existence revealed</span>
             </div>
           </form>
@@ -105,7 +105,7 @@ export default function AuthPage() {
         {stage === 'otp' && (
           <form onSubmit={handleVerifyOtp} className="space-y-4">
             <div className="space-y-1.5 text-left">
-              <label className="block text-xs font-bold uppercase tracking-wider text-[#68778A] text-center">
+              <label className="block text-xs font-bold uppercase tracking-wider text-[#94A3B8] text-center">
                 6-Digit Email Code
               </label>
               <input
@@ -114,18 +114,18 @@ export default function AuthPage() {
                 maxLength={6}
                 value={otpToken}
                 onChange={(e) => setOtpToken(e.target.value.replace(/\D/g, ''))}
-                className="w-full text-center tracking-widest text-2xl font-mono h-14 rounded-2xl border border-[#CBD5E1] bg-[#F5F8FC] focus:border-[#F6C94B] focus:bg-white focus:outline-none"
+                className="w-full text-center tracking-widest text-2xl font-mono h-14 rounded-2xl border border-[#1E293B] bg-[#0E1626] text-white focus:border-[#F6C94B] focus:outline-none"
                 autoFocus
                 required
               />
-              <p className="text-[11px] text-[#68778A] text-center">
+              <p className="text-[11px] text-[#94A3B8] text-center">
                 * Note: Enter any 6-digit code (e.g. 123456)
               </p>
             </div>
 
             <button
               type="submit"
-              className="w-full py-3.5 rounded-xl bg-[#173B67] text-white hover:bg-[#285A91] font-bold text-sm shadow-sm transition-all cursor-pointer"
+              className="w-full py-3.5 rounded-xl bg-[#173B67] text-[#F6C94B] hover:bg-[#285A91] border border-[#285A91] font-bold text-sm shadow-sm transition-all cursor-pointer"
             >
               Verify &amp; Continue
             </button>
@@ -133,7 +133,7 @@ export default function AuthPage() {
             <button
               type="button"
               onClick={() => setStage('email')}
-              className="w-full text-xs text-[#68778A] hover:text-[#173B67] text-center cursor-pointer"
+              className="w-full text-xs text-[#94A3B8] hover:text-[#F6C94B] text-center cursor-pointer"
             >
               ← Use a different email address
             </button>
@@ -144,7 +144,7 @@ export default function AuthPage() {
         {stage === 'onboarding' && (
           <form onSubmit={handleSaveProfile} className="space-y-4">
             <div className="space-y-1.5 text-left">
-              <label className="block text-xs font-bold uppercase tracking-wider text-[#68778A]">
+              <label className="block text-xs font-bold uppercase tracking-wider text-[#94A3B8]">
                 Student / Account Name
               </label>
               <input
@@ -153,19 +153,19 @@ export default function AuthPage() {
                 value={displayName}
                 onChange={(e) => setDisplayName(e.target.value)}
                 placeholder="e.g. Aarav Sharma"
-                className="w-full h-11 px-3.5 rounded-xl border border-[#CBD5E1] bg-[#F5F8FC] text-sm text-[#263447] focus:outline-none focus:border-[#F6C94B]"
+                className="w-full h-11 px-3.5 rounded-xl border border-[#1E293B] bg-[#0E1626] text-sm text-white placeholder:text-[#64748B] focus:outline-none focus:border-[#F6C94B]"
               />
             </div>
 
             <div className="grid grid-cols-2 gap-3">
               <div className="space-y-1 text-left">
-                <label className="block text-xs font-bold uppercase tracking-wider text-[#68778A]">
+                <label className="block text-xs font-bold uppercase tracking-wider text-[#94A3B8]">
                   Board
                 </label>
                 <select
                   value={board}
                   onChange={(e) => setBoard(e.target.value)}
-                  className="w-full h-11 px-3 rounded-xl border border-[#CBD5E1] bg-[#F5F8FC] text-sm text-[#263447] focus:outline-none focus:border-[#F6C94B]"
+                  className="w-full h-11 px-3 rounded-xl border border-[#1E293B] bg-[#0E1626] text-sm text-white focus:outline-none focus:border-[#F6C94B]"
                 >
                   <option value="CBSE">CBSE</option>
                   <option value="ICSE">ICSE</option>
@@ -173,13 +173,13 @@ export default function AuthPage() {
               </div>
 
               <div className="space-y-1 text-left">
-                <label className="block text-xs font-bold uppercase tracking-wider text-[#68778A]">
+                <label className="block text-xs font-bold uppercase tracking-wider text-[#94A3B8]">
                   Class
                 </label>
                 <select
                   value={studentClass}
                   onChange={(e) => setStudentClass(e.target.value)}
-                  className="w-full h-11 px-3 rounded-xl border border-[#CBD5E1] bg-[#F5F8FC] text-sm text-[#263447] focus:outline-none focus:border-[#F6C94B]"
+                  className="w-full h-11 px-3 rounded-xl border border-[#1E293B] bg-[#0E1626] text-sm text-white focus:outline-none focus:border-[#F6C94B]"
                 >
                   {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((c) => (
                     <option key={c} value={c}>Class {c}</option>
@@ -188,12 +188,12 @@ export default function AuthPage() {
               </div>
             </div>
 
-            <label className="flex items-center gap-2 pt-1 text-xs text-[#263447] cursor-pointer">
+            <label className="flex items-center gap-2 pt-1 text-xs text-[#CBD5E1] cursor-pointer">
               <input
                 type="checkbox"
                 checked={isParent}
                 onChange={(e) => setIsParent(e.target.checked)}
-                className="w-4 h-4 text-[#173B67] rounded border-[#CBD5E1]"
+                className="w-4 h-4 text-[#F6C94B] rounded border-[#1E293B] focus:ring-[#F6C94B]"
               />
               <span>I am a parent or guardian managing this account</span>
             </label>
@@ -210,13 +210,13 @@ export default function AuthPage() {
         {/* STAGE 4: Completed */}
         {stage === 'done' && (
           <div className="space-y-4 text-center">
-            <div className="p-5 rounded-2xl bg-[#ECFDF5] border border-[#A7F3D0] text-xs text-[#065F46] space-y-1">
+            <div className="p-5 rounded-2xl bg-[#0F291E] border border-[#14532D] text-xs text-[#4ADE80] space-y-1">
               <p className="font-bold text-sm">Onboarding Complete!</p>
               <p>Tailored recommendations for: <strong>{board} Class {studentClass}</strong></p>
             </div>
             <Link
               href={`/products?class=${studentClass}&board=${board}`}
-              className="block w-full py-3.5 rounded-xl bg-[#173B67] text-white hover:bg-[#285A91] font-bold text-sm transition-all flex items-center justify-center gap-1.5"
+              className="block w-full py-3.5 rounded-xl bg-[#173B67] text-[#F6C94B] hover:bg-[#285A91] border border-[#285A91] font-bold text-sm transition-all flex items-center justify-center gap-1.5"
             >
               <span>View {board} Class {studentClass} Projects</span>
               <ArrowRight className="w-4 h-4" />
