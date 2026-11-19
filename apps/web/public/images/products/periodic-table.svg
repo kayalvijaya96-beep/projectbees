@@ -1,0 +1,37 @@
+<svg width="400" height="300" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="300" rx="16" fill="#F0F5FA"/>
+  <!-- Chart Paper with Hanging Rollers -->
+  <rect x="50" y="24" width="300" height="12" rx="3" fill="#173B67"/>
+  <rect x="60" y="36" width="280" height="230" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="2"/>
+  <rect x="50" y="266" width="300" height="10" rx="2" fill="#173B67"/>
+  <!-- Chart Header -->
+  <rect x="80" y="44" width="240" height="16" rx="3" fill="#173B67"/>
+  <text x="200" y="56" font-family="sans-serif" font-size="9" font-weight="bold" fill="#F6C94B" text-anchor="middle">PERIODIC TABLE OF THE ELEMENTS</text>
+  <!-- Mini Element Grid -->
+  <!-- Row 1 -->
+  <rect x="75" y="68" width="18" height="18" rx="2" fill="#FEF08A" stroke="#CA8A04"/>
+  <text x="84" y="80" font-family="sans-serif" font-size="8" font-weight="bold" fill="#854D0E" text-anchor="middle">H</text>
+  <rect x="307" y="68" width="18" height="18" rx="2" fill="#E0F2FE" stroke="#0284C7"/>
+  <text x="316" y="80" font-family="sans-serif" font-size="8" font-weight="bold" fill="#0369A1" text-anchor="middle">He</text>
+  <!-- Row 2 -->
+  <rect x="75" y="90" width="18" height="18" rx="2" fill="#FEE2E2" stroke="#DC2626"/>
+  <text x="84" y="102" font-family="sans-serif" font-size="8" font-weight="bold" fill="#991B1B" text-anchor="middle">Li</text>
+  <rect x="97" y="90" width="18" height="18" rx="2" fill="#FFEDD5" stroke="#EA580C"/>
+  <text x="106" y="102" font-family="sans-serif" font-size="8" font-weight="bold" fill="#9A3412" text-anchor="middle">Be</text>
+  <rect x="235" y="90" width="18" height="18" rx="2" fill="#DCFCE7" stroke="#16A34A"/>
+  <text x="244" y="102" font-family="sans-serif" font-size="8" font-weight="bold" fill="#166534" text-anchor="middle">C</text>
+  <rect x="259" y="90" width="18" height="18" rx="2" fill="#DCFCE7" stroke="#16A34A"/>
+  <text x="268" y="102" font-family="sans-serif" font-size="8" font-weight="bold" fill="#166534" text-anchor="middle">N</text>
+  <rect x="283" y="90" width="18" height="18" rx="2" fill="#DCFCE7" stroke="#16A34A"/>
+  <text x="292" y="102" font-family="sans-serif" font-size="8" font-weight="bold" fill="#166534" text-anchor="middle">O</text>
+  <rect x="307" y="90" width="18" height="18" rx="2" fill="#E0F2FE" stroke="#0284C7"/>
+  <text x="316" y="102" font-family="sans-serif" font-size="8" font-weight="bold" fill="#0369A1" text-anchor="middle">Ne</text>
+  <!-- Row 3 & 4 Blocks Representation -->
+  <rect x="75" y="115" width="250" height="90" rx="4" fill="#F8FAFC" stroke="#E2E8F0"/>
+  <!-- IUPAC 118 Elements Badge -->
+  <rect x="120" y="130" width="160" height="40" rx="8" fill="#173B67"/>
+  <text x="200" y="148" font-family="sans-serif" font-size="12" font-weight="bold" fill="#F6C94B" text-anchor="middle">118 IUPAC ELEMENTS</text>
+  <text x="200" y="162" font-family="sans-serif" font-size="9" fill="#93C5FD" text-anchor="middle">Thermal Laminated • Tear Proof</text>
+  <!-- Hanging String -->
+  <path d="M120 24 L 200 6 L 280 24" stroke="#64748B" stroke-width="1.5" fill="none"/>
+</svg>

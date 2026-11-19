@@ -2,7 +2,7 @@ import React from 'react';
 import { cn } from '../utils';
 
 export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
-  variant?: 'default' | 'board' | 'class' | 'success' | 'warning' | 'danger' | 'outline';
+  variant?: 'default' | 'board' | 'class' | 'success' | 'warning' | 'danger' | 'outline' | 'yellow' | 'navy';
 }
 
 export const Badge: React.FC<BadgeProps> = ({
@@ -12,13 +12,15 @@ export const Badge: React.FC<BadgeProps> = ({
   ...props
 }) => {
   const variants = {
-    default: 'bg-slate-100 text-slate-800',
-    board: 'bg-amber-100 text-amber-800 font-semibold border border-amber-200',
-    class: 'bg-blue-50 text-blue-700 font-medium border border-blue-200',
-    success: 'bg-emerald-50 text-emerald-700 border border-emerald-200',
-    warning: 'bg-yellow-50 text-yellow-800 border border-yellow-200',
-    danger: 'bg-red-50 text-red-700 border border-red-200',
-    outline: 'border border-slate-300 text-slate-700',
+    default: 'bg-[#F5F8FC] text-[#263447] border border-[#E2E8F0]',
+    board: 'bg-[#FEF9C3] text-[#854D0E] font-semibold border border-[#FDE047]',
+    class: 'bg-[#EFF6FF] text-[#1E40AF] font-medium border border-[#BFDBFE]',
+    yellow: 'bg-[#FEF08A]/60 text-[#713F12] font-semibold border border-[#FACC15]',
+    navy: 'bg-[#173B67] text-white font-medium',
+    success: 'bg-[#ECFDF5] text-[#065F46] font-medium border border-[#A7F3D0]',
+    warning: 'bg-[#FFFBEB] text-[#92400E] border border-[#FDE68A]',
+    danger: 'bg-[#FEF2F2] text-[#991B1B] border border-[#FECACA]',
+    outline: 'border border-[#CBD5E1] text-[#263447]',
   };
 
   return (

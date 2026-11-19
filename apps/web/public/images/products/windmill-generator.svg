@@ -1,0 +1,26 @@
+<svg width="400" height="300" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="300" rx="16" fill="#F0F5FA"/>
+  <!-- Grass Hill Base -->
+  <path d="M0 260 Q 200 230 400 260 L 400 300 L 0 300 Z" fill="#E2E8F0"/>
+  <!-- Windmill Tower -->
+  <polygon points="120,250 145,100 155,100 180,250" fill="#FFFFFF" stroke="#173B67" stroke-width="2.5"/>
+  <circle cx="150" cy="100" r="10" fill="#F6C94B" stroke="#173B67" stroke-width="2.5"/>
+  <!-- Propeller Blades -->
+  <path d="M150 100 Q 150 20 135 15 Q 160 20 150 100 Z" fill="#285A91" stroke="#173B67" stroke-width="2"/>
+  <path d="M150 100 Q 220 140 225 155 Q 215 130 150 100 Z" fill="#285A91" stroke="#173B67" stroke-width="2"/>
+  <path d="M150 100 Q 80 140 75 155 Q 85 130 150 100 Z" fill="#285A91" stroke="#173B67" stroke-width="2"/>
+  <!-- Miniature House -->
+  <rect x="250" y="190" width="90" height="60" rx="4" fill="#FFFFFF" stroke="#173B67" stroke-width="2.5"/>
+  <polygon points="240,190 295,140 350,190" fill="#F6C94B" stroke="#173B67" stroke-width="2.5"/>
+  <!-- Door & Windows with Glowing LED -->
+  <rect x="270" y="200" width="22" height="22" rx="2" fill="#FEF08A" stroke="#EAB308" stroke-width="2"/>
+  <!-- LED Bulb on Roof -->
+  <circle cx="295" cy="125" r="12" fill="#FEF08A"/>
+  <circle cx="295" cy="125" r="6" fill="#FACC15" stroke="#CA8A04" stroke-width="2"/>
+  <!-- Glowing Radiance rays -->
+  <line x1="295" y1="105" x2="295" y2="95" stroke="#FACC15" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="315" y1="115" x2="325" y2="108" stroke="#FACC15" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="275" y1="115" x2="265" y2="108" stroke="#FACC15" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Wire Connection -->
+  <path d="M150 130 Q 200 240 250 220" stroke="#E11D48" stroke-width="2" stroke-dasharray="4 2" fill="none"/>
+</svg>
