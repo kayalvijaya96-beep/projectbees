@@ -1,78 +1,7 @@
 import { NextRequest } from 'next/server';
 import { successResponse, errorResponse } from '@/lib/api-response';
-
-const SEED_PRODUCTS = [
-  {
-    id: 'f0000000-0000-0000-0000-000000000001',
-    sku: 'PB-SCI-HYD-01',
-    slug: 'hydraulic-lift-working-science-model',
-    title: "Hydraulic Lift Working Science Model (Pascal's Law Demonstration)",
-    short_description: 'Ready-to-demonstrate syringe-based hydraulic jack illustrating fluid pressure and mechanical advantage.',
-    selling_price: 499.0,
-    compare_at_price: 649.0,
-    status: 'published',
-    board: 'CBSE',
-    class_number: 8,
-    category_slug: 'working-science-models',
-    project_type: 'working_model',
-  },
-  {
-    id: 'f0000000-0000-0000-0000-000000000002',
-    sku: 'PB-SCI-WND-02',
-    slug: 'windmill-electricity-generator-working-model',
-    title: 'Windmill Electricity Generator Working Model with LED Glow',
-    short_description: 'Working wind energy converter model that turns kinetic blade rotation into electrical energy to illuminate an LED house.',
-    selling_price: 599.0,
-    compare_at_price: 799.0,
-    status: 'published',
-    board: 'CBSE',
-    class_number: 9,
-    category_slug: 'working-science-models',
-    project_type: 'working_model',
-  },
-  {
-    id: 'f0000000-0000-0000-0000-000000000003',
-    sku: 'PB-BIO-HRT-03',
-    slug: 'human-heart-3d-dissectible-model',
-    title: 'Human Heart 3D Anatomical Dissectible Educational Model',
-    short_description: 'Detailed 2-part dissectible human heart model displaying atria, ventricles, valves and major blood vessels.',
-    selling_price: 699.0,
-    compare_at_price: 899.0,
-    status: 'published',
-    board: 'ICSE',
-    class_number: 10,
-    category_slug: 'still-educational-models',
-    project_type: 'still_model',
-  },
-  {
-    id: 'f0000000-0000-0000-0000-000000000004',
-    sku: 'PB-AST-SOL-04',
-    slug: 'solar-system-3d-revolving-kit',
-    title: '3D Motorized Solar System Revolving Model Kit',
-    short_description: 'Motorized planetary orbit model with illuminated Sun projector and 8 orbiting planets.',
-    selling_price: 799.0,
-    compare_at_price: 1099.0,
-    status: 'published',
-    board: 'CBSE',
-    class_number: 6,
-    category_slug: 'diy-science-kits',
-    project_type: 'diy_kit',
-  },
-  {
-    id: 'f0000000-0000-0000-0000-000000000005',
-    sku: 'PB-CHM-PER-05',
-    slug: 'periodic-table-embossed-laminated-chart',
-    title: 'Modern Periodic Table Embossed Wall Chart (CBSE & ICSE Aligned)',
-    short_description: 'Extra-large tear-proof embossed chart featuring IUPAC 118 elements with electron configurations and real-world applications.',
-    selling_price: 299.0,
-    compare_at_price: 399.0,
-    status: 'published',
-    board: 'CBSE',
-    class_number: 10,
-    category_slug: 'educational-charts',
-    project_type: 'chart',
-  },
-];
+import { createAdminClient } from '@projectbee/supabase-config';
+import { CATALOGUE_PRODUCTS } from '@/lib/products-data';
 
 export async function GET(request: NextRequest) {
   try {
@@ -81,8 +10,106 @@ export async function GET(request: NextRequest) {
     const classParam = searchParams.get('class');
     const boardParam = searchParams.get('board')?.toUpperCase();
     const categoryParam = searchParams.get('category');
+    const sortParam = searchParams.get('sort') || 'popular';
+    const minPrice = searchParams.get('min_price') ? Number(searchParams.get('min_price')) : undefined;
+    const maxPrice = searchParams.get('max_price') ? Number(searchParams.get('max_price')) : undefined;
 
-    let products = SEED_PRODUCTS.filter((p) => p.status === 'published');
+    const hasSupabase = Boolean(
+      process.env.NEXT_PUBLIC_SUPABASE_URL &&
+      (process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY)
+    );
+
+    if (hasSupabase) {
+      try {
+        const supabase = createAdminClient();
+        let queryBuilder = supabase
+          .from('products')
+          .select(`
+            id,
+            sku,
+            slug,
+            title,
+            short_description,
+            full_description,
+            selling_price,
+            compare_at_price,
+            status,
+            is_featured,
+            average_rating,
+            reviews_count,
+            inventory (available_quantity),
+            product_academic_mappings (
+              boards (code),
+              classes (class_number),
+              categories (slug, name)
+            ),
+            product_media (storage_path, alt_text, is_primary)
+          `)
+          .eq('status', 'published');
+
+        if (query) {
+          queryBuilder = queryBuilder.or(`title.ilike.%${query}%,short_description.ilike.%${query}%,sku.ilike.%${query}%`);
+        }
+
+        if (minPrice !== undefined) {
+          queryBuilder = queryBuilder.gte('selling_price', minPrice);
+        }
+        if (maxPrice !== undefined) {
+          queryBuilder = queryBuilder.lte('selling_price', maxPrice);
+        }
+
+        const { data, error } = await queryBuilder;
+
+        if (!error && data && data.length > 0) {
+          let results = (data as any[]).map((item: any) => {
+            const mapping = Array.isArray(item.product_academic_mappings)
+              ? item.product_academic_mappings[0]
+              : item.product_academic_mappings;
+            const primaryMedia = Array.isArray(item.product_media)
+              ? item.product_media.find((m: any) => m.is_primary) || item.product_media[0]
+              : item.product_media;
+            const inv = Array.isArray(item.inventory) ? item.inventory[0] : item.inventory;
+
+            return {
+              id: item.id,
+              sku: item.sku,
+              slug: item.slug,
+              title: item.title,
+              short_description: item.short_description,
+              full_description: item.full_description,
+              selling_price: Number(item.selling_price),
+              compare_at_price: item.compare_at_price ? Number(item.compare_at_price) : undefined,
+              status: item.status,
+              rating: item.average_rating || 5.0,
+              reviews_count: item.reviews_count || 0,
+              in_stock: (inv?.available_quantity || 0) > 0,
+              board: mapping?.boards?.code || 'CBSE & ICSE',
+              class_number: mapping?.classes?.class_number || 8,
+              category_slug: mapping?.categories?.slug || 'working-science-models',
+              category_name: mapping?.categories?.name || 'Working Science Models',
+              image_url: primaryMedia?.storage_path || '/images/products/hydraulic-lift.png',
+            };
+          });
+
+          if (classParam && classParam !== 'all') {
+            const cls = parseInt(classParam, 10);
+            results = results.filter((p) => p.class_number === cls);
+          }
+          if (boardParam && boardParam !== 'ALL') {
+            results = results.filter((p) => p.board.includes(boardParam));
+          }
+          if (categoryParam && categoryParam !== 'all') {
+            results = results.filter((p) => p.category_slug === categoryParam);
+          }
+
+          return successResponse({ products: results, count: results.length, source: 'database' });
+        }
+      } catch (dbErr) {
+        console.warn('Database query fallback to seed catalogue:', dbErr);
+      }
+    }
+
+    let products = [...CATALOGUE_PRODUCTS];
 
     if (query) {
       products = products.filter(
@@ -93,27 +120,41 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    if (classParam) {
+    if (classParam && classParam !== 'all') {
       const classNum = parseInt(classParam, 10);
       if (!isNaN(classNum)) {
         products = products.filter((p) => p.class_number === classNum);
       }
     }
 
-    if (boardParam) {
-      products = products.filter((p) => p.board === boardParam);
+    if (boardParam && boardParam !== 'ALL') {
+      products = products.filter((p) => p.board.toUpperCase().includes(boardParam));
     }
 
-    if (categoryParam) {
+    if (categoryParam && categoryParam !== 'all') {
       products = products.filter((p) => p.category_slug === categoryParam);
     }
 
-    return successResponse({
-      products,
-      total: products.length,
-    });
-  } catch (err: any) {
-    return errorResponse('INTERNAL_ERROR', err.message || 'Failed to retrieve catalogue products', 500);
+    if (minPrice !== undefined) {
+      products = products.filter((p) => p.selling_price >= minPrice);
+    }
+
+    if (maxPrice !== undefined) {
+      products = products.filter((p) => p.selling_price <= maxPrice);
+    }
+
+    if (sortParam === 'price-low') {
+      products.sort((a, b) => a.selling_price - b.selling_price);
+    } else if (sortParam === 'price-high') {
+      products.sort((a, b) => b.selling_price - a.selling_price);
+    } else if (sortParam === 'rating') {
+      products.sort((a, b) => (b.rating ?? 5) - (a.rating ?? 5));
+    } else {
+      products.sort((a, b) => (b.reviews_count ?? 0) - (a.reviews_count ?? 0));
+    }
+
+    return successResponse({ products, count: products.length, source: 'catalogue_cache' });
+  } catch (error: any) {
+    return errorResponse('INTERNAL_ERROR', error.message || 'Failed to fetch catalogue', 500);
   }
 }
-

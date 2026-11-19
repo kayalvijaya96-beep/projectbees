@@ -1,65 +1,95 @@
 import { NextRequest } from 'next/server';
 import { successResponse, errorResponse } from '@/lib/api-response';
-
-const PRODUCT_DETAILS: Record<string, any> = {
-  'hydraulic-lift-working-science-model': {
-    id: 'f0000000-0000-0000-0000-000000000001',
-    sku: 'PB-SCI-HYD-01',
-    slug: 'hydraulic-lift-working-science-model',
-    title: "Hydraulic Lift Working Science Model (Pascal's Law Demonstration)",
-    short_description: 'Ready-to-demonstrate syringe-based hydraulic jack illustrating fluid pressure and mechanical advantage.',
-    full_description: 'This working hydraulic lift model visually demonstrates Pascal\'s Law for CBSE and ICSE Physics curricula. Using dual fluid syringes, flexible tubing, and an acrylic scissor-lift mechanism, students can easily operate the lift by applying manual force to elevate a small toy vehicle or weight.',
-    specifications: {
-      materials: ['BPA-free medical grade syringes', 'Non-toxic food-color fluid', 'Clear acrylic scissor frame', 'Silicone tubing'],
-      dimensions: '22 x 14 x 18 cm',
-      weight_grams: 380,
-      difficulty: 'Easy',
-      assembly_required: false,
-    },
-    selling_price: 499.0,
-    compare_at_price: 649.0,
-    board: 'CBSE',
-    class_number: 8,
-    category_slug: 'working-science-models',
-    in_stock: true,
-    available_quantity: 25,
-  },
-  'windmill-electricity-generator-working-model': {
-    id: 'f0000000-0000-0000-0000-000000000002',
-    sku: 'PB-SCI-WND-02',
-    slug: 'windmill-electricity-generator-working-model',
-    title: 'Windmill Electricity Generator Working Model with LED Glow',
-    short_description: 'Working wind energy converter model that turns kinetic blade rotation into electrical energy to illuminate an LED house.',
-    full_description: 'Designed specifically for Class 7 to 10 science exhibitions, this working windmill generator converts wind energy into electrical power.',
-    specifications: {
-      materials: ['High-grade ABS propeller', 'Low-RPM DC generator motor', 'Wooden display base', 'High-luminance 5mm LED'],
-      dimensions: '25 x 15 x 30 cm',
-      weight_grams: 420,
-      difficulty: 'Easy',
-      assembly_required: false,
-    },
-    selling_price: 599.0,
-    compare_at_price: 799.0,
-    board: 'CBSE',
-    class_number: 9,
-    category_slug: 'working-science-models',
-    in_stock: true,
-    available_quantity: 18,
-  },
-};
+import { createAdminClient } from '@projectbee/supabase-config';
+import { CATALOGUE_PRODUCTS } from '@/lib/products-data';
 
 export async function GET(
-  _request: NextRequest,
+  request: NextRequest,
   { params }: { params: { slug: string } }
 ) {
-  const product = PRODUCT_DETAILS[params.slug];
+  try {
+    const { slug } = params;
 
-  if (!product) {
-    return errorResponse('NOT_FOUND', `Product with slug '${params.slug}' not found.`, 404);
+    const hasSupabase = Boolean(
+      process.env.NEXT_PUBLIC_SUPABASE_URL &&
+      (process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY)
+    );
+
+    if (hasSupabase) {
+      try {
+        const supabase = createAdminClient();
+        const { data, error } = await supabase
+          .from('products')
+          .select(`
+            id,
+            sku,
+            slug,
+            title,
+            short_description,
+            full_description,
+            specifications,
+            selling_price,
+            compare_at_price,
+            status,
+            average_rating,
+            reviews_count,
+            inventory (available_quantity),
+            product_academic_mappings (
+              boards (code),
+              classes (class_number),
+              categories (slug, name)
+            ),
+            product_media (storage_path, alt_text, is_primary)
+          `)
+          .eq('slug', slug)
+          .single();
+
+        if (!error && data) {
+          const rawItem = data as any;
+          const mapping = Array.isArray(rawItem.product_academic_mappings)
+            ? rawItem.product_academic_mappings[0]
+            : rawItem.product_academic_mappings;
+          const primaryMedia = Array.isArray(rawItem.product_media)
+            ? rawItem.product_media.find((m: any) => m.is_primary) || rawItem.product_media[0]
+            : rawItem.product_media;
+          const inv = Array.isArray(rawItem.inventory) ? rawItem.inventory[0] : rawItem.inventory;
+
+          return successResponse({
+            product: {
+              id: rawItem.id,
+              sku: rawItem.sku,
+              slug: rawItem.slug,
+              title: rawItem.title,
+              short_description: rawItem.short_description,
+              full_description: rawItem.full_description,
+              specifications: rawItem.specifications,
+              selling_price: Number(rawItem.selling_price),
+              compare_at_price: rawItem.compare_at_price ? Number(rawItem.compare_at_price) : undefined,
+              status: rawItem.status,
+              rating: rawItem.average_rating || 5.0,
+              reviews_count: rawItem.reviews_count || 0,
+              in_stock: (inv?.available_quantity || 0) > 0,
+              board: mapping?.boards?.code || 'CBSE & ICSE',
+              class_number: mapping?.classes?.class_number || 8,
+              category_slug: mapping?.categories?.slug || 'working-science-models',
+              category_name: mapping?.categories?.name || 'Working Science Models',
+              image_url: primaryMedia?.storage_path || '/images/products/hydraulic-lift.png',
+            },
+            source: 'database',
+          });
+        }
+      } catch (err) {
+        console.warn('Database query fallback to seed product:', err);
+      }
+    }
+
+    const product = CATALOGUE_PRODUCTS.find((p) => p.slug === slug);
+    if (!product) {
+      return errorResponse('NOT_FOUND', `Product with slug '${slug}' not found.`, 404);
+    }
+
+    return successResponse({ product, source: 'catalogue_cache' });
+  } catch (error: any) {
+    return errorResponse('INTERNAL_ERROR', error.message || 'Failed to fetch product', 500);
   }
-
-  return successResponse({
-    product,
-  });
 }
-

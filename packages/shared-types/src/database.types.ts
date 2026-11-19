@@ -329,3 +329,72 @@ export interface ContentPage {
   updated_by: string | null;
   updated_at: string;
 }
+
+
+export interface Wishlist {
+  id: string;
+  user_id: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface WishlistItem {
+  id: string;
+  wishlist_id: string;
+  product_id: string;
+  created_at: string;
+}
+
+export interface Coupon {
+  id: string;
+  code: string;
+  description: string | null;
+  discount_type: 'percentage' | 'fixed_amount';
+  discount_value: number;
+  min_order_amount: number;
+  max_discount_amount: number | null;
+  valid_from: string;
+  valid_to: string;
+  usage_limit: number | null;
+  usage_count: number;
+  is_active: boolean;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface CouponRedemption {
+  id: string;
+  coupon_id: string;
+  user_id: string;
+  order_id: string;
+  discount_applied: number;
+  redeemed_at: string;
+}
+
+export interface PaymentRecord {
+  id: string;
+  order_id: string;
+  user_id: string;
+  payment_gateway: 'COD' | 'RAZORPAY';
+  gateway_order_id: string | null;
+  gateway_payment_id: string | null;
+  gateway_signature: string | null;
+  amount: number;
+  currency: string;
+  status: PaymentStatus;
+  raw_response: Record<string, unknown>;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface CustomerNotification {
+  id: string;
+  user_id: string;
+  type: string;
+  title: string;
+  message: string;
+  metadata: Record<string, unknown>;
+  is_read: boolean;
+  sent_email: boolean;
+  created_at: string;
+}
